@@ -1,9 +1,17 @@
 import React from 'react'
+import styled, { ThemeProvider } from 'styled-components';
+import theme from '../styles/theme';
 
-export default function About() {
+const AboutBg = styled.div`
+    height: 100vh;
+`;
+
+export default function About(props) {
+    // console.log(props);
+    
     return (
-        <div>
-            <div>About</div>
-        </div>
+        <ThemeProvider theme={theme}>
+            <AboutBg>About</AboutBg>
+        </ThemeProvider>
     );
 };
