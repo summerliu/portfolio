@@ -12,6 +12,7 @@ const NavigationBg = styled.div`
     width: 100%;
     height: ${(props) => props.isOpen ? '100vh' : '85px'};
     background-color: ${(props) => props.isOpen ? props.theme.colors.white : 'transparent'};
+    z-index: 1;
 `;
 
 const NameDiv = styled.div`
