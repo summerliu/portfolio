@@ -25,11 +25,10 @@ const Img = styled.img.attrs({
 `;
 
 const TextContainer = styled.div`
-    background-color: white;
+    background-color: ${(props) => props.theme.colors.green};
     padding: 50px 90px;
-    color: ${(props) => props.theme.colors.black};
+    color: white;
     width: 50%;
-
 `;
 
 const NameDiv = styled.div`
@@ -57,7 +56,6 @@ const BannerDiv = styled.div`
     margin: 100px;
 `;
 
-
 const Bottom = styled.div`
     background-color: white;
     display: inline-flex;
@@ -76,6 +74,7 @@ const cards = [
 
 const CardTitle = styled.div`
     ${(props) => props.theme.fonts.Montserrat}
+    color: ${(props) => props.theme.colors.green};
     font-size: 38px;
     font-weight: 700;
 `;
