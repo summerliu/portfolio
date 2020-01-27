@@ -1,8 +1,8 @@
 export default {
     colors: {
-        black: 'rgb(45, 45, 45)',
-        grey: '#777777',
-        white: '#f5f5f5',
+        black: 'rgb(53, 53, 53);',
+        grey: '#777777;',
+        white: 'rgba(245, 245, 245, .95);',
     },
     fonts: {
         OpenSans: "font-family: 'Open Sans', sans-serif;",
