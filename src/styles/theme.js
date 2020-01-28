@@ -16,4 +16,13 @@ export default {
         paddingBottomRight: "padding-right: 30px; padding-bottom: 30px;",
         paddingBottomLeft: "padding-left: 30px; padding-bottom: 30px;",
     },
+    size: {
+        mobileS: '320px',
+        mobileM: '375px',
+        mobileL: '425px',
+        tablet: '768px',
+        tabletL: '1024px',
+        laptopL: '1440px',
+        desktop: '2560px',
+    },
 };

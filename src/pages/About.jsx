@@ -1,18 +1,23 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
+import rwd from '../styles/rwd';
 import profle from '../assets/profile.jpg';
 
 const AboutBg = styled.div`
-
+    display: flex;
+    flex-wrap: wrap;
 `;
 
 const Top = styled.div`
-
+    display: flex;
+    flex-wrap: wrap;
 `;
 
 const ImgDiv = styled.div`
     width: 90%;
+    padding: 0;
+    opacity: .85;
 `;
 
 const Img = styled.img.attrs({
@@ -25,21 +30,38 @@ const Img = styled.img.attrs({
 
 const TextContainer = styled.div`
     background-color: ${(props) => props.theme.colors.green};
-    padding: 50px 90px;
     color: white;
     width: 50%;
+    text-align: left;
+
+    @media ${rwd.mobileS} {
+        padding: 25px 45px;
+    }
+    @media ${rwd.tabletL} {
+        padding: 50px 90px;
+    }
 `;
 
 const NameDiv = styled.div`
     ${(props) => props.theme.fonts.PlayfairDisplay}
-    font-size: 100px;
-    width: 320px;
+
+    @media ${rwd.mobileS} {
+        font-size: 50px;
+    }
+    @media ${rwd.mobileL} {
+        font-size: 60px;
+    }
+    @media ${`(min-width: 790px)`} {
+        font-size: 80px;
+    }
+    @media ${rwd.tabletL} {
+        font-size: 100px;
+    }
 `;
 
 const ContentDiv = styled.div`
     ${(props) => props.theme.fonts.OpenSans}
     font-size: 15px;
-    width: 320px;
 `;
 
 const Midddle = styled.div`
@@ -51,7 +73,14 @@ const Midddle = styled.div`
 const BannerDiv = styled.div`
     ${(props) => props.theme.fonts.OpenSans}
     font-size: 15px;
-    margin: 100px;
+    text-align: center;
+
+    @media ${rwd.mobileS} {
+        padding: 25px 45px;
+    }
+    @media ${rwd.tabletL} {
+        padding: 50px 90px;
+    }
 `;
 
 const Bottom = styled.div`
@@ -60,7 +89,12 @@ const Bottom = styled.div`
 `;
 
 const Card = styled.div`
-    padding: 50px 100px;
+    @media ${rwd.mobileS} {
+        padding: 25px 75px;
+    }
+    @media ${rwd.tabletL} {
+        padding: 50px 100px;
+    }
 `;
 
 const cards = [
@@ -84,15 +118,15 @@ const CardContent = styled.div`
 export default function About(props) {
     return (
         <ThemeProvider theme={theme}>
-            <AboutBg className='row'>
-                <Top className='row'>
-                    <ImgDiv className='col'><Img/></ImgDiv>
-                    <TextContainer className='col'>
+            <AboutBg>
+                <Top>
+                    <ImgDiv className='col-12 col-md-6'><Img/></ImgDiv>
+                    <TextContainer className='col-12 col-md-6'>
                         <NameDiv>Summer Liu</NameDiv>
                         <ContentDiv>I am a self-taught, driven, and motivated software developer who is passionate about the use of technology as a tool of design and empowerment. I have done work in software development, front-end/back-end web, database/server management, product/UI/UX design, and video game development.</ContentDiv>
                     </TextContainer>
                 </Top>
-                <Midddle className='row'>
+                <Midddle>
                     <BannerDiv>
                         I am a self-taught, driven, and motivated software developer who is passionate about the use of technology as a tool of design and empowerment. I have done work in software development, front-end/back-end web, database/server management, product/UI/UX design, and video game development.
                     </BannerDiv>
@@ -100,7 +134,7 @@ export default function About(props) {
                 <Bottom className='row'>
                     {cards.map((card, index) => {
                         return (
-                            <Card className='col' key={index}>
+                            <Card className='col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4' key={index}>
                                 <CardTitle><span style={{color: theme.colors.grey, opacity: '.7'}}>0{index + 1}.</span> {card.title}</CardTitle>
                                 <CardContent>{card.content}</CardContent>
                             </Card>

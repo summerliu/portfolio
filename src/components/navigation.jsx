@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
+import rwd from '../styles/rwd';
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -25,15 +26,20 @@ const NameDiv = styled.div`
 
 const IconDiv = styled.div`
     ${(props) => !props.isOpen ? props.theme.paddings.paddingTopRight : null}
-    float: right;
     ${(props) => props.isOpen ? 'position: absolute; top: 30px; right: 30px;' : null}
+    float: right;
 `;
 
 const MenuContainer = styled.div`
     text-align: center;
-    padding-top: 200px;
     font-size: 60px;
     font-weight: bold;
+    @media ${rwd.mobileS} {
+        padding-top: 75px;
+    }
+    @media ${rwd.tabletL} {
+        padding-top: 200px;
+    }
 `;
 
 const ImgDiv = styled.div`
@@ -46,9 +52,9 @@ const ImgDiv = styled.div`
 const routes = [
     {path: '/', name: 'Home'},
     {path: '/about', name: 'About'},
-    {path: '/cv', name: 'CV'},
     {path: '/experience', name: 'Experience'},
-    {path: '/projects', name: 'Projects'},
+    // {path: '/projects', name: 'Projects'},
+    // {path: '/cv', name: 'CV'},
 ];
 
 const icons = [
@@ -58,8 +64,6 @@ const icons = [
 
 function Navigation(props) {
     let location = useLocation();
-    console.log(location.pathname);
-    
     return (
         <ThemeProvider theme={theme}>
             <NavigationBg isOpen={props.isOpen}>
@@ -81,6 +85,12 @@ function Navigation(props) {
                                 </Link>
                             );
                         })}
+                        <a rel="noopener noreferrer" target='_blank'
+                            href='https://drive.google.com/file/d/1_F-UcQhN6mA-YTFVmgtvFklNGB0aHYd1/view?usp=sharing'
+                            style={{display: "inline-block", width: "100%", textDecoration: "none", color: theme.colors.black}}
+                        >
+                            CV
+                        </a>
                     </MenuContainer>
                     <ImgDiv>
                         {icons.map((icon, index) => {

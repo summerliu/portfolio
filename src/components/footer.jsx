@@ -10,6 +10,8 @@ const FooterBg = styled.div`
     background-color: rgb(43, 43, 43);
     padding: 30px;
     justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
 `;
 
 const TextDiv = styled.div`
@@ -30,7 +32,7 @@ const icons = [
 function Footer() {
     return (
         <ThemeProvider theme={theme}>
-            <FooterBg className='row'>
+            <FooterBg>
                 <TextDiv>
                     <div style={{marginRight: '20px'}}>&copy;	2020 Summer Liu</div>
                     <div style={{marginRight: '20px'}}>summer.ycliu@gmail.com</div>

@@ -11,7 +11,7 @@ function App() {
     let [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div style={{maxWidth: '1800px', minWidth: '480px'}}>
+        <div style={{maxWidth: '2560px', minWidth: '320px', overflowX: 'hidden'}}>
             <Router>
                 <Navigation isOpen={isOpen} setIsOpen={setIsOpen}/>
                 <Route component={Home} exact path="/"/>
