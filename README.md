@@ -1,4 +1,4 @@
-# Summer Liu Profolio Website Made by React
+# Summer Liu Portfolio Website Made by React
 
 ## System Requirement
 * [Node.js](https://nodejs.org) v10.x
