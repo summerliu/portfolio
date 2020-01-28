@@ -10,7 +10,7 @@ const NavigationBg = styled.div`
     position: fixed;
     top: 0;
     width: 100%;
-    height: ${(props) => props.isOpen ? '100vh' : '85px'};
+    height: ${(props) => props.isOpen ? '100%' : '85px'};
     background-color: ${(props) => props.isOpen ? props.theme.colors.white : 'transparent'};
     z-index: 1;
 `;
@@ -26,7 +26,6 @@ const NameDiv = styled.div`
 const IconDiv = styled.div`
     ${(props) => !props.isOpen ? props.theme.paddings.paddingTopRight : null}
     float: right;
-    width: 30px;
     ${(props) => props.isOpen ? 'position: absolute; top: 30px; right: 30px;' : null}
 `;
 

@@ -16,7 +16,4 @@ export default {
         paddingBottomRight: "padding-right: 30px; padding-bottom: 30px;",
         paddingBottomLeft: "padding-left: 30px; padding-bottom: 30px;",
     },
-    breakpoints: {
-
-    },
 };

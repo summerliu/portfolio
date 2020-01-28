@@ -4,12 +4,11 @@ import theme from '../styles/theme';
 import profle from '../assets/profile.jpg';
 
 const AboutBg = styled.div`
-    width: 100%;
+
 `;
 
 const Top = styled.div`
-    display: inline-flex;
-    max-height: 510px;
+
 `;
 
 const ImgDiv = styled.div`
@@ -47,7 +46,6 @@ const Midddle = styled.div`
     background-color: ${(props) => props.theme.colors.grey};
     color: white;
     padding: 30px;
-    margin-top: -30px;
 `;
 
 const BannerDiv = styled.div`
@@ -58,7 +56,6 @@ const BannerDiv = styled.div`
 
 const Bottom = styled.div`
     background-color: white;
-    display: inline-flex;
     color: ${(props) => props.theme.colors.black};
 `;
 
@@ -87,23 +84,23 @@ const CardContent = styled.div`
 export default function About(props) {
     return (
         <ThemeProvider theme={theme}>
-            <AboutBg>
-                <Top>
-                    <ImgDiv><Img/></ImgDiv>
-                    <TextContainer>
+            <AboutBg className='row'>
+                <Top className='row'>
+                    <ImgDiv className='col'><Img/></ImgDiv>
+                    <TextContainer className='col'>
                         <NameDiv>Summer Liu</NameDiv>
                         <ContentDiv>I am a self-taught, driven, and motivated software developer who is passionate about the use of technology as a tool of design and empowerment. I have done work in software development, front-end/back-end web, database/server management, product/UI/UX design, and video game development.</ContentDiv>
                     </TextContainer>
                 </Top>
-                <Midddle>
+                <Midddle className='row'>
                     <BannerDiv>
                         I am a self-taught, driven, and motivated software developer who is passionate about the use of technology as a tool of design and empowerment. I have done work in software development, front-end/back-end web, database/server management, product/UI/UX design, and video game development.
                     </BannerDiv>
                 </Midddle>
-                <Bottom>
+                <Bottom className='row'>
                     {cards.map((card, index) => {
                         return (
-                            <Card key={index}>
+                            <Card className='col' key={index}>
                                 <CardTitle><span style={{color: theme.colors.grey, opacity: '.7'}}>0{index + 1}.</span> {card.title}</CardTitle>
                                 <CardContent>{card.content}</CardContent>
                             </Card>
