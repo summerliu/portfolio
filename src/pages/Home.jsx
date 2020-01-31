@@ -104,7 +104,7 @@ const IconText = styled.div`
 
 const icons = [
     {content: 'User Friendly', src: faUsers},
-    {content: 'Well Design', src: faPencilRuler},
+    {content: 'Aesthetic Design', src: faPencilRuler},
     {content: 'Clean Code', src: faBroom},
     {content: 'Made with Heart', src: faHeart},
 ];
@@ -129,8 +129,8 @@ export default function Home(props) {
                         })}
                     </IconContainer>
                     <div className='row'>
-                        <ContentDiv className='col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6' title={true}>Hi. I’m Summer, a frontend developer from Taiwan. Please take a look around!</ContentDiv>
-                        <ContentDiv className='col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6' title={false}>I am passionate about building excellent software that improves the lives of those around me. I specialize in creating software for clients ranging from individuals and small-businesses all the way to large enterprise corporations. All of my work is produced locally from Moscow, Idaho. What would you do if you had a software expert available at your fingertips?</ContentDiv>
+                        <ContentDiv className='col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6' title={true}>Hi. I’m Summer, a frontend developer from Taiwan. Please take a look!</ContentDiv>
+                        <ContentDiv className='col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6' title={false}>I am passionate about building excellent software that improves the lives of those around me. I specialize in creating websites for clients ranging from individuals and small businesses. What would you do if you had a software expert available at your fingertips?</ContentDiv>
                     </div>
                 </Midddle>
             </div>

@@ -123,12 +123,12 @@ export default function About(props) {
                     <ImgDiv className='col-12 col-md-6'><Img/></ImgDiv>
                     <TextContainer className='col-12 col-md-6'>
                         <NameDiv>Summer Liu</NameDiv>
-                        <ContentDiv>I am a self-taught, driven, and motivated software developer who is passionate about the use of technology as a tool of design and empowerment. I have done work in software development, front-end/back-end web, database/server management, product/UI/UX design, and video game development.</ContentDiv>
+                        <ContentDiv>I am a self-taught, driven, and motivated software developer who is passionate about the use of technology as a tool of design and empowerment. I have done work in front-end/back-end web, database/server management, product/UI/UX design, and video game development.</ContentDiv>
                     </TextContainer>
                 </Top>
                 <Midddle>
                     <BannerDiv>
-                        I am a self-taught, driven, and motivated software developer who is passionate about the use of technology as a tool of design and empowerment. I have done work in software development, front-end/back-end web, database/server management, product/UI/UX design, and video game development.
+                        I am a self-taught, driven, and motivated software developer who is passionate about the use of technology as a tool of design and empowerment. I have done work in front-end/back-end web, database/server management, product/UI/UX design, and video game development.
                     </BannerDiv>
                 </Midddle>
                 <Bottom className='row'>
