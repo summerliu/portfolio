@@ -50,7 +50,7 @@ const ImgDiv = styled.div`
 `;
 
 const routes = [
-    {path: '/', name: 'Home'},
+    {path: '/portfolio/', name: 'Home'},
     {path: '/about', name: 'About'},
     {path: '/experience', name: 'Experience'},
     // {path: '/projects', name: 'Projects'},
@@ -69,7 +69,7 @@ function Navigation(props) {
             <NavigationBg isOpen={props.isOpen}>
                 {!props.isOpen ?
                 <NameDiv>
-                    <Link style={{textDecoration: "none", color: location.pathname !== '/' ? theme.colors.black : "white"}} to="/">Summer Liu</Link>
+                    <Link style={{textDecoration: "none", color: location.pathname !== '/portfolio/' ? theme.colors.black : "white"}} to="/portfolio/">Summer Liu</Link>
                 </NameDiv> :
                 <div>
                     <MenuContainer>
@@ -105,7 +105,7 @@ function Navigation(props) {
                 <IconDiv isOpen={props.isOpen}>
                     <FontAwesomeIcon
                         icon={!props.isOpen ? faBars : faTimes} onClick={() => props.setIsOpen(!props.isOpen)}
-                        style={{fontSize: '30px', cursor: 'pointer', color: props.isOpen ? theme.colors.black : location.pathname !== '/' ? theme.colors.black : 'white'}}
+                        style={{fontSize: '30px', cursor: 'pointer', color: props.isOpen ? theme.colors.black : location.pathname !== '/portfolio/' ? theme.colors.black : 'white'}}
                     />
                 </IconDiv>
             </NavigationBg>
