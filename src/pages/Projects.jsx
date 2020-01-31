@@ -1,7 +1,13 @@
 import React from 'react'
+import { ThemeProvider } from 'styled-components';
+import theme from '../styles/theme';
 
-export default function Projects() {
+function Projects() {
     return (
-        <div>Projects</div>
+        <ThemeProvider theme={theme}>
+            <div>Projects</div>
+        </ThemeProvider>
     );
-}
+};
+
+export default Projects;

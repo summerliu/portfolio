@@ -52,9 +52,8 @@ const ImgDiv = styled.div`
 const routes = [
     {path: '/portfolio/', name: 'Home'},
     {path: '/about', name: 'About'},
-    {path: '/experience', name: 'Experience'},
+    // {path: '/experience', name: 'Experience'},
     // {path: '/projects', name: 'Projects'},
-    // {path: '/cv', name: 'CV'},
 ];
 
 const icons = [
