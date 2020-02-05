@@ -85,7 +85,7 @@ function Navigation(props) {
                             );
                         })}
                         <a rel="noopener noreferrer" target='_blank'
-                            href='https://drive.google.com/file/d/1_F-UcQhN6mA-YTFVmgtvFklNGB0aHYd1/view?usp=sharing'
+                            href='https://drive.google.com/file/d/1STG5J7V0qPQzhainbc0ptlEakCzFl9jc/view?usp=sharing'
                             style={{display: "inline-block", width: "100%", textDecoration: "none", color: theme.colors.black}}
                         >
                             CV

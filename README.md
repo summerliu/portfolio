@@ -1,4 +1,8 @@
-# Summer Liu Portfolio Website Made by React
+# Summer Liu Portfolio Website Made by React (Hooks)
+
+## Website Details
+* Link of the website(https://summerliu.co/)
+* Stacks: React, react-router-dom, styled-component
 
 ## System Requirement
 * [Node.js](https://nodejs.org) v10.x
@@ -7,8 +11,8 @@
 
 ## Initialization
 ```
-npm start
-yarn start
+npm install
+yarn add
 ```
 
 ## Useful Scripts
