@@ -5,7 +5,7 @@ import rwd from '../styles/rwd';
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin, faGithub, faMedium } from '@fortawesome/free-brands-svg-icons';
 
 const NavigationBg = styled.div`
     position: fixed;
@@ -57,8 +57,9 @@ const routes = [
 ];
 
 const icons = [
-    {url: 'https://github.com/summerliu', src: faGithub, alt: 'GitHub'},
     {url: 'https://www.linkedin.com/in/summer-liu-260b7681/', src: faLinkedin, alt: 'LinkedIn'},
+    {url: 'https://github.com/summerliu', src: faGithub, alt: 'GitHub'},
+    {url: 'https://medium.com/@summer.ycliu', src: faMedium, alt: 'Medium'},
 ];
 
 function Navigation(props) {
@@ -70,6 +71,7 @@ function Navigation(props) {
                 <NameDiv>
                     <Link style={{textDecoration: "none", color: location.pathname !== '/' ? theme.colors.black : "white"}} to="/">Summer Liu</Link>
                 </NameDiv> :
+
                 <div>
                     <MenuContainer>
                         {routes.map((route, index) => {
@@ -85,12 +87,13 @@ function Navigation(props) {
                             );
                         })}
                         <a rel="noopener noreferrer" target='_blank'
-                            href='https://drive.google.com/file/d/1STG5J7V0qPQzhainbc0ptlEakCzFl9jc/view?usp=sharing'
+                            href='https://drive.google.com/file/d/1g1ix2yZPJEoq0aLCdQvNqv4kPKKtCSZ6/view'
                             style={{display: "inline-block", width: "100%", textDecoration: "none", color: theme.colors.black}}
                         >
                             CV
                         </a>
                     </MenuContainer>
+
                     <ImgDiv>
                         {icons.map((icon, index) => {
                             return (
@@ -101,10 +104,15 @@ function Navigation(props) {
                         })}
                     </ImgDiv>
                 </div>}
+
                 <IconDiv isOpen={props.isOpen}>
                     <FontAwesomeIcon
-                        icon={!props.isOpen ? faBars : faTimes} onClick={() => props.setIsOpen(!props.isOpen)}
-                        style={{fontSize: '30px', cursor: 'pointer', color: props.isOpen ? theme.colors.black : location.pathname !== '/' ? theme.colors.black : 'white'}}
+                        icon={!props.isOpen ? faBars : faTimes}
+                        onClick={() => props.setIsOpen(!props.isOpen)}
+                        style={{
+                            fontSize: '30px', cursor: 'pointer',
+                            color: props.isOpen ? theme.colors.black : location.pathname !== '/' ? theme.colors.black : 'white'
+                        }}
                     />
                 </IconDiv>
             </NavigationBg>

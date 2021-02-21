@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin, faGithub, faMedium } from '@fortawesome/free-brands-svg-icons';
 
 const FooterBg = styled.div`
     ${(props) => props.theme.fonts.OpenSans}
@@ -25,8 +25,9 @@ const IconDiv = styled.div`
 `;
 
 const icons = [
-    {url: 'https://github.com/summerliu', src: faGithub, alt: 'GitHub'},
     {url: 'https://www.linkedin.com/in/summer-liu-260b7681/', src: faLinkedin, alt: 'LinkedIn'},
+    {url: 'https://github.com/summerliu', src: faGithub, alt: 'GitHub'},
+    {url: 'https://medium.com/@summer.ycliu', src: faMedium, alt: 'Medium'},
 ];
 
 function Footer() {
@@ -34,7 +35,7 @@ function Footer() {
         <ThemeProvider theme={theme}>
             <FooterBg>
                 <TextDiv>
-                    <div style={{marginRight: '20px'}}>&copy;	2020 Summer Liu</div>
+                    <div style={{marginRight: '20px'}}>&copy;	2021 Summer Liu</div>
                     <div style={{marginRight: '20px'}}>summer.ycliu@gmail.com</div>
                 </TextDiv>
                 <IconDiv>
