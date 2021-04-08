@@ -34,6 +34,12 @@ yarn run build
 ```
 Build production code
 
+```
+npm run deploy
+yarn run deploy
+```
+Build production code and deploy code to GitHub page
+
 ## Basic Rules of Development
 * Confirm there are no eslint warnings before commit
 * Don't add unnecessary package to "dependencies" in `package.json`

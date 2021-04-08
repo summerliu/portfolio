@@ -62,7 +62,7 @@ const icons = [
     {url: 'https://medium.com/@summer.ycliu', src: faMedium, alt: 'Medium'},
 ];
 
-function Navigation(props) {
+function Navigator(props) {
     let location = useLocation();
     return (
         <ThemeProvider theme={theme}>
@@ -120,4 +120,4 @@ function Navigation(props) {
     );
 };
 
-export default Navigation;
+export default Navigator;
