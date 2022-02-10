@@ -35,7 +35,7 @@ function Footer() {
         <ThemeProvider theme={theme}>
             <FooterBg>
                 <TextDiv>
-                    <div style={{marginRight: '20px'}}>&copy;	2021 Summer Liu</div>
+                    <div style={{marginRight: '20px'}}>&copy;	{new Date().getFullYear()} Summer Liu</div>
                     <div style={{marginRight: '20px'}}>summer.ycliu@gmail.com</div>
                 </TextDiv>
                 <IconDiv>
