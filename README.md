@@ -34,6 +34,14 @@ yarn run build
 ```
 Build production code
 
+```
+npm run deploy
+yarn run deploy
+```
+Deploy release code to www.summerliu.co
+* Please go to Setting > Pages to set up "Custom domain" field as CNAME
+
 ## Basic Rules of Development
 * Confirm there are no eslint warnings before commit
 * Don't add unnecessary package to "dependencies" in `package.json`
+* Never push code to branch "gh-pages"
