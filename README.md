@@ -1,7 +1,7 @@
 # Summer Liu Portfolio Website Made by React (Hooks)
 
 ## Website Details
-* Link of the website(https://summerliu.co/)
+* Link of the website(https://summerliu.dev/)
 * Stacks: React, react-router-dom, styled-component
 
 ## System Requirement
@@ -38,7 +38,7 @@ Build production code
 npm run deploy
 yarn run deploy
 ```
-Deploy release code to www.summerliu.co
+Deploy release code to www.summerliu.dev
 * Please go to Setting > Pages to set up "Custom domain" field as CNAME
 
 ## Basic Rules of Development
