@@ -33,7 +33,7 @@ interface SocialIcon {
 }
 
 const NavigationBg = styled.div.withConfig({
-    shouldForwardProp: (prop) => prop !== 'isOpen'
+    shouldForwardProp: (prop: PropertyKey) => prop !== 'isOpen'
 })<NavigationBgProps>`
     position: fixed;
     top: 0;
@@ -52,7 +52,7 @@ const NameDiv = styled.div`
 `;
 
 const IconDiv = styled.div.withConfig({
-    shouldForwardProp: (prop) => prop !== 'isOpen'
+    shouldForwardProp: (prop: PropertyKey) => prop !== 'isOpen'
 })<IconDivProps>`
     ${(props) => (!props.isOpen ? props.theme.paddings.paddingTopRight : null)}
     ${(props) => (props.isOpen ? 'position: absolute; top: 30px; right: 30px;' : null)}
