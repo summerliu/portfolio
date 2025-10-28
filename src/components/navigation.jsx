@@ -7,7 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faGithub, faMedium } from '@fortawesome/free-brands-svg-icons';
 
-const NavigationBg = styled.div`
+const NavigationBg = styled.div.withConfig({
+    shouldForwardProp: (prop) => prop !== 'isOpen'
+})`
     position: fixed;
     top: 0;
     width: 100%;
@@ -24,7 +26,9 @@ const NameDiv = styled.div`
     float: left;
 `
 
-const IconDiv = styled.div`
+const IconDiv = styled.div.withConfig({
+    shouldForwardProp: (prop) => prop !== 'isOpen'
+})`
     ${(props) => !props.isOpen ? props.theme.paddings.paddingTopRight : null}
     ${(props) => props.isOpen ? 'position: absolute; top: 30px; right: 30px;' : null}
     float: right;

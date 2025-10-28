@@ -1,4 +1,4 @@
-export default {
+const theme = {
     colors: {
         black: 'rgb(53, 53, 53)',
         grey: '#929098',
@@ -26,3 +26,5 @@ export default {
         desktop: '2560px',
     },
 };
+
+export default theme;

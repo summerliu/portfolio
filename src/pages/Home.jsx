@@ -56,22 +56,22 @@ const Midddle = styled.div`
 `;
 
 const ContentDiv = styled.div`
-    ${(props) => props.title ? props.theme.fonts.Montserrat : props.theme.fonts.OpenSans}
+    ${(props) => props.$title ? props.theme.fonts.Montserrat : props.theme.fonts.OpenSans}
     @media ${rwd.mobileS} {
         padding: 10px;
-        font-size: ${(props) => props.title ? '24px' : '15px'};
+        font-size: ${(props) => props.$title ? '24px' : '15px'};
         text-align: center;
     }
     @media ${rwd.mobileL} {
         text-align: center;
     }
     @media ${rwd.tablet} {
-        font-size: ${(props) => props.title ? '28px' : '15px'};
+        font-size: ${(props) => props.$title ? '28px' : '15px'};
     }
     @media ${rwd.tabletL} {
         padding: 100px 30px;
-        font-size: ${(props) => props.title ? '32px' : '15px'};
-        text-align: ${(props) => props.title ? 'right' : 'left'};
+        font-size: ${(props) => props.$title ? '32px' : '15px'};
+        text-align: ${(props) => props.$title ? 'right' : 'left'};
     }
     @media ${rwd.laptopL} {
         padding: 100px 50px;
@@ -129,8 +129,8 @@ export default function Home(props) {
                         })}
                     </IconContainer>
                     <div className='row'>
-                        <ContentDiv className='col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6' title={true}>Hi. I’m Summer, a frontend developer from Taiwan. Please take a look!</ContentDiv>
-                        <ContentDiv className='col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6' title={false}>I am passionate about building excellent software that improves the lives of those around me. I specialize in creating websites for clients ranging from individuals and small businesses. What would you do if you had a software expert available at your fingertips?</ContentDiv>
+                        <ContentDiv className='col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6' $title>Hi. I’m Summer, a frontend developer from Taiwan. Please take a look!</ContentDiv>
+                        <ContentDiv className='col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>I am passionate about building excellent software that improves the lives of those around me. I specialize in creating websites for clients ranging from individuals and small businesses. What would you do if you had a software expert available at your fingertips?</ContentDiv>
                     </div>
                 </Midddle>
             </div>

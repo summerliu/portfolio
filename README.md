@@ -5,38 +5,32 @@
 * Stacks: React, react-router-dom, styled-component
 
 ## System Requirement
-* [Node.js](https://nodejs.org) v10.x
-* [NPM](https://www.npmjs.com/) package manager
-* [Yarn](https://yarnpkg.com) package manager
+* [Node.js](https://nodejs.org) v18.x (LTS) or newer
+* [pnpm](https://pnpm.io/) package manager
 
 ## Initialization
 ```
-npm install
-yarn add
+pnpm install
 ```
 
 ## Useful Scripts
 ```
-npm start
-yarn start
+pnpm start
 ```
 Start a webpack dev. server & enable HMR
 
 ```
-npm test
-yarn test
+pnpm test
 ```
 Run test module
 
 ```
-npm run build
-yarn run build
+pnpm run build
 ```
 Build production code
 
 ```
-npm run deploy
-yarn run deploy
+pnpm run deploy
 ```
 Deploy release code to www.summerliu.dev
 * Please go to Setting > Pages to set up "Custom domain" field as CNAME

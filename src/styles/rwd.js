@@ -9,7 +9,7 @@
 // };
 import theme from './theme';
 
-export default {
+const rwd = {
     mobileS: `(min-width: ${theme.size.mobileS})`,
     mobileM: `(min-width: ${theme.size.mobileM})`,
     mobileL: `(min-width: ${theme.size.mobileL})`,
@@ -19,3 +19,5 @@ export default {
     desktop: `(min-width: ${theme.size.desktop})`,
     desktopL: `(min-width: ${theme.size.desktop})`,
 };
+
+export default rwd;
