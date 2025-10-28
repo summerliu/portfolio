@@ -2,7 +2,7 @@
 
 ## Website Details
 * Link of the website(https://summerliu.dev/)
-* Stacks: React, react-router-dom, styled-component
+* Stacks: React, TypeScript, react-router-dom, styled-components
 
 ## System Requirement
 * [Node.js](https://nodejs.org) v18.x (LTS) or newer

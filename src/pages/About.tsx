@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import theme from '../styles/theme';
-import rwd from '../styles/rwd';
 import profle from '../assets/profile.jpg';
+import rwd from '../styles/rwd';
+import theme from '../styles/theme';
 
 const AboutBg = styled.div`
     display: flex;
@@ -97,10 +97,27 @@ const Card = styled.div`
     }
 `;
 
-const cards = [
-    { title: 'Ideas', content: 'Understand the subject matter completely and build on the knowledge related to it, becoming intimately familiar with the subject matter. Determine methods to address the specific needs and requirements.'},
-    { title: 'Design', content: 'Misleadingly thought of as the superficial appearance of a product, design actually encompasses a lot more. It is a cross functional process that includes market research, technical research, design of a concept, and prototype mockup.'},
-    { title: 'Develop', content: 'Findings from the ideas and design phases are utilized for the production of specific products including materials, systems, and methods. Engineer utilizing the research and designs to produce products.'},
+interface CardContentData {
+    title: string;
+    content: string;
+}
+
+const cards: CardContentData[] = [
+    {
+        title: 'Ideas',
+        content:
+            'Understand the subject matter completely and build on the knowledge related to it, becoming intimately familiar with the subject matter. Determine methods to address the specific needs and requirements.',
+    },
+    {
+        title: 'Design',
+        content:
+            'Misleadingly thought of as the superficial appearance of a product, design actually encompasses a lot more. It is a cross functional process that includes market research, technical research, design of a concept, and prototype mockup.',
+    },
+    {
+        title: 'Develop',
+        content:
+            'Findings from the ideas and design phases are utilized for the production of specific products including materials, systems, and methods. Engineer utilizing the research and designs to produce products.',
+    },
 ];
 
 const CardTitle = styled.div`
@@ -115,27 +132,35 @@ const CardContent = styled.div`
     font-size: 15px;
 `;
 
-export default function About(props) {
+const About: React.FC = () => {
     return (
         <ThemeProvider theme={theme}>
             <AboutBg>
                 <Top>
-                    <ImgDiv className='col-12 col-md-6'><Img/></ImgDiv>
-                    <TextContainer className='col-12 col-md-6'>
+                    <ImgDiv className="col-12 col-md-6">
+                        <Img />
+                    </ImgDiv>
+                    <TextContainer className="col-12 col-md-6">
                         <NameDiv>Summer Liu</NameDiv>
-                        <ContentDiv>I am a self-taught, driven, and motivated software developer who is passionate about the use of technology as a tool of design and empowerment. I have done work in front-end/back-end web, database/server management, product/UI/UX design, and video game development.</ContentDiv>
+                        <ContentDiv>
+                            I am a self-taught, driven, and motivated software developer who is passionate about the use of technology as a tool of design and empowerment. I have done work
+                            in front-end/back-end web, database/server management, product/UI/UX design, and video game development.
+                        </ContentDiv>
                     </TextContainer>
                 </Top>
                 <Midddle>
                     <BannerDiv>
-                        I am a self-taught, driven, and motivated software developer who is passionate about the use of technology as a tool of design and empowerment. I have done work in front-end/back-end web, database/server management, product/UI/UX design, and video game development.
+                        I am a self-taught, driven, and motivated software developer who is passionate about the use of technology as a tool of design and empowerment. I have done work in
+                        front-end/back-end web, database/server management, product/UI/UX design, and video game development.
                     </BannerDiv>
                 </Midddle>
-                <Bottom className='row'>
+                <Bottom className="row">
                     {cards.map((card, index) => {
                         return (
-                            <Card className='col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4' key={index}>
-                                <CardTitle><span style={{color: theme.colors.grey, opacity: '.7'}}>0{index + 1}.</span> {card.title}</CardTitle>
+                            <Card className="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4" key={card.title}>
+                                <CardTitle>
+                                    <span style={{ color: theme.colors.grey, opacity: '.7' }}>0{index + 1}.</span> {card.title}
+                                </CardTitle>
                                 <CardContent>{card.content}</CardContent>
                             </Card>
                         );
@@ -145,3 +170,5 @@ export default function About(props) {
         </ThemeProvider>
     );
 };
+
+export default About;

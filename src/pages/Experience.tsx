@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 
-function Projects() {
+const Experience: React.FC = () => {
     return (
         <ThemeProvider theme={theme}>
-            <div>Projects</div>
+            <div>Experience</div>
         </ThemeProvider>
     );
 };
 
-export default Projects;
+export default Experience;

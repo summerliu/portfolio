@@ -1,9 +1,10 @@
 import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
-import theme from '../styles/theme';
-import rwd from '../styles/rwd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faHeart, faBroom, faPencilRuler, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled, { ThemeProvider } from 'styled-components';
+import rwd from '../styles/rwd';
+import theme from '../styles/theme';
 
 const Top = styled.div`
     text-align: center;
@@ -55,23 +56,27 @@ const Midddle = styled.div`
     width: 100%;
 `;
 
-const ContentDiv = styled.div`
-    ${(props) => props.$title ? props.theme.fonts.Montserrat : props.theme.fonts.OpenSans}
+interface ContentDivProps {
+    $title?: boolean;
+}
+
+const ContentDiv = styled.div<ContentDivProps>`
+    ${(props) => (props.$title ? props.theme.fonts.Montserrat : props.theme.fonts.OpenSans)}
     @media ${rwd.mobileS} {
         padding: 10px;
-        font-size: ${(props) => props.$title ? '24px' : '15px'};
+        font-size: ${(props) => (props.$title ? '24px' : '15px')};
         text-align: center;
     }
     @media ${rwd.mobileL} {
         text-align: center;
     }
     @media ${rwd.tablet} {
-        font-size: ${(props) => props.$title ? '28px' : '15px'};
+        font-size: ${(props) => (props.$title ? '28px' : '15px')};
     }
     @media ${rwd.tabletL} {
         padding: 100px 30px;
-        font-size: ${(props) => props.$title ? '32px' : '15px'};
-        text-align: ${(props) => props.$title ? 'right' : 'left'};
+        font-size: ${(props) => (props.$title ? '32px' : '15px')};
+        text-align: ${(props) => (props.$title ? 'right' : 'left')};
     }
     @media ${rwd.laptopL} {
         padding: 100px 50px;
@@ -102,38 +107,50 @@ const IconText = styled.div`
     margin: 30px 0;
 `;
 
-const icons = [
-    {content: 'User Friendly', src: faUsers},
-    {content: 'Aesthetic Design', src: faPencilRuler},
-    {content: 'Clean Code', src: faBroom},
-    {content: 'Made with Heart', src: faHeart},
+interface HighlightIcon {
+    content: string;
+    src: IconDefinition;
+}
+
+const icons: HighlightIcon[] = [
+    { content: 'User Friendly', src: faUsers },
+    { content: 'Aesthetic Design', src: faPencilRuler },
+    { content: 'Clean Code', src: faBroom },
+    { content: 'Made with Heart', src: faHeart },
 ];
 
-export default function Home(props) {
+const Home: React.FC = () => {
     return (
         <ThemeProvider theme={theme}>
-            <div className='row'>
-                <Top className='col'>
+            <div className="row">
+                <Top className="col">
                     <TitleDiv>Web Frontend Developer</TitleDiv>
                     <SubtitleDiv>Turn Your <ItalicSpan>Ideas</ItalicSpan> into <ItalicSpan>Reality</ItalicSpan></SubtitleDiv>
                 </Top>
                 <Midddle>
-                    <IconContainer className='row'>
-                        {icons.map((icon, index) => {
+                    <IconContainer className="row">
+                        {icons.map((icon) => {
                             return (
-                                <IconDiv key={index} className='col-6 col-sm-6 col-md-6 col-lg-3'>
-                                    <FontAwesomeIcon icon={icon.src}/>
+                                <IconDiv key={icon.content} className="col-6 col-sm-6 col-md-6 col-lg-3">
+                                    <FontAwesomeIcon icon={icon.src} title={icon.content} />
                                     <IconText>{icon.content}</IconText>
                                 </IconDiv>
                             );
                         })}
                     </IconContainer>
-                    <div className='row'>
-                        <ContentDiv className='col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6' $title>Hi. I’m Summer, a frontend developer from Taiwan. Please take a look!</ContentDiv>
-                        <ContentDiv className='col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'>I am passionate about building excellent software that improves the lives of those around me. I specialize in creating websites for clients ranging from individuals and small businesses. What would you do if you had a software expert available at your fingertips?</ContentDiv>
+                    <div className="row">
+                        <ContentDiv className="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" $title>
+                            Hi. I’m Summer, a frontend developer from Taiwan. Please take a look!
+                        </ContentDiv>
+                        <ContentDiv className="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            I am passionate about building excellent software that improves the lives of those around me. I specialize in creating websites for clients
+                            ranging from individuals and small businesses. What would you do if you had a software expert available at your fingertips?
+                        </ContentDiv>
                     </div>
                 </Midddle>
             </div>
         </ThemeProvider>
     );
 };
+
+export default Home;

@@ -18,6 +18,6 @@ const rwd = {
     laptopL: `(min-width: ${theme.size.laptopL})`,
     desktop: `(min-width: ${theme.size.desktop})`,
     desktopL: `(min-width: ${theme.size.desktop})`,
-};
+} as const;
 
 export default rwd;
