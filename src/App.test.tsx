@@ -4,19 +4,33 @@ import { describe, expect, it } from 'vitest';
 import About from './app/about/page';
 import NotFound from './app/not-found';
 import Home from './app/page';
-import { site } from './content';
+import { certifications, education, experience, site, skills } from './content';
 import { renderPage } from './test/renderPage';
 
 describe('pages', () => {
   it('renders the home page', () => {
     renderPage(<Home />);
-    expect(screen.getByRole('heading', { level: 1, name: 'Web Frontend Developer' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: site.role })).toBeInTheDocument();
   });
 
   it('renders the about page', () => {
     renderPage(<About />, '/about/');
     expect(screen.getByRole('heading', { level: 1, name: site.name })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: /Summer Liu/ })).toBeInTheDocument();
+  });
+
+  it('lists every role, skill group and credential from the CV', () => {
+    renderPage(<About />, '/about/');
+    for (const role of experience) {
+      expect(screen.getAllByText(role.company).length).toBeGreaterThan(0);
+    }
+    for (const group of skills) {
+      expect(screen.getByText(group.label)).toBeInTheDocument();
+    }
+    for (const c of [...education, ...certifications]) {
+      expect(screen.getByText(c.title)).toBeInTheDocument();
+    }
+    expect(screen.getByRole('heading', { level: 2, name: 'Where I’ve worked' })).toBeInTheDocument();
   });
 
   it('renders the 404 page', () => {
@@ -47,6 +61,10 @@ describe('navigation', () => {
       `mailto:${site.email}`,
     );
     expect(screen.getByRole('link', { name: 'View CV' })).toHaveAttribute('href', site.cvUrl);
+    expect(screen.getByRole('link', { name: /See my experience/ })).toHaveAttribute(
+      'href',
+      '/about#experience',
+    );
     for (const name of ['LinkedIn', 'GitHub', 'Medium']) {
       expect(screen.getAllByRole('link', { name }).length).toBeGreaterThan(0);
     }
