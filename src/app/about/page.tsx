@@ -1,38 +1,70 @@
-import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import profile from '../../assets/profile.jpg';
-import { site } from '../../content';
+import type { ReactNode } from 'react';
+import portrait from '../../assets/profile.jpg';
+import {
+  type Credential,
+  certifications,
+  earlierRoles,
+  education,
+  experience,
+  profile,
+  site,
+  skills,
+} from '../../content';
 
-export const metadata: Metadata = { title: 'About' };
-
-interface Step {
-  title: string;
-  description: string;
-}
-
-const process: readonly Step[] = [
-  {
-    title: 'Ideas',
-    description:
-      'Understand the subject matter completely and build on the knowledge related to it, becoming intimately familiar with it. Determine methods to address the specific needs and requirements.',
-  },
-  {
-    title: 'Design',
-    description:
-      'Often mistaken for the superficial appearance of a product, design encompasses a lot more: a cross-functional process spanning market research, technical research, concept design and prototype mock-ups.',
-  },
-  {
-    title: 'Develop',
-    description:
-      'Findings from the ideas and design phases drive the production of the product itself — its materials, systems and methods — engineered from the research and designs that came before.',
-  },
-];
+export const metadata: Metadata = {
+  title: 'About',
+  description: `Experience, skills and education of ${site.name}, ${site.role} in ${site.location}.`,
+};
 
 // A true semicircle on a 4:5 box: 50% of the width across, 40% of the height down.
 // (rounded-t-full would make the browser scale every corner down, flattening the bottom.)
 const roundTop = 'rounded-t-[50%_40%] rounded-b-card';
+
+function Section({
+  id,
+  eyebrow,
+  title,
+  children,
+}: {
+  id: string;
+  eyebrow: string;
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <section id={id} className="wrap grid gap-10 pt-section" aria-labelledby={`${id}-heading`}>
+      <header className="grid gap-2">
+        <p className="eyebrow">{eyebrow}</p>
+        <h2 id={`${id}-heading`} className="text-fluid-2xl">
+          {title}
+        </h2>
+      </header>
+      {children}
+    </section>
+  );
+}
+
+function CredentialList({ heading, items }: { heading: string; items: readonly Credential[] }) {
+  return (
+    <div className="grid content-start gap-4">
+      <h3 className="text-fluid-lg">{heading}</h3>
+      <ul className="grid gap-3">
+        {items.map((c) => (
+          <li key={c.title} className="rounded-card border border-line bg-surface p-6">
+            <p className="font-medium text-ink">{c.title}</p>
+            <p className="text-fluid-sm text-muted">
+              {c.detail} · {c.period}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default function About() {
   return (
@@ -45,7 +77,7 @@ export default function About() {
             className={`absolute inset-0 -z-10 translate-x-(--offset) translate-y-(--offset) bg-sage-soft ${roundTop}`}
           />
           <Image
-            src={profile}
+            src={portrait}
             alt="Summer Liu smiling by a riverside walkway in autumn"
             sizes="(min-width: 52rem) 30rem, 100vw"
             priority
@@ -54,46 +86,89 @@ export default function About() {
         </figure>
 
         <div className="grid gap-4 text-muted">
-          <p className="eyebrow">About me</p>
+          <p className="eyebrow">
+            {site.role} · {site.location}
+          </p>
           <h1 className="text-fluid-3xl text-ink [font-variation-settings:'opsz'_144]">{site.name}</h1>
-          <p className="font-serif text-fluid-lg leading-[1.45] text-ink">
-            I am a self-taught, driven and motivated software developer who is passionate about the use of
-            technology as a tool of design and empowerment.
-          </p>
-          <p>
-            I have done work in front-end and back-end web, database and server management, product and UI/UX
-            design, and video game development.
-          </p>
+          <p className="font-serif text-fluid-lg leading-[1.45] text-ink">{profile[0]}</p>
+          <p>{profile[1]}</p>
           <div className="mt-3 flex flex-wrap items-center gap-6">
-            <a href={site.cvUrl} target="_blank" rel="noreferrer" className="pill bg-ink text-paper">
-              View my CV <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-[0.85em]" />
-            </a>
-            <a href={`mailto:${site.email}`} className="link-accent text-ink">
-              Say hello
+            <a href={`mailto:${site.email}`} className="pill bg-ink text-paper">
+              <FontAwesomeIcon icon={faEnvelope} /> Say hello
             </a>
           </div>
         </div>
       </section>
 
-      <section className="wrap grid gap-10 pt-section" aria-labelledby="process-heading">
-        <header className="grid gap-2">
-          <p className="eyebrow">Process</p>
-          <h2 id="process-heading" className="text-fluid-2xl">
-            How I work
-          </h2>
-        </header>
-        <ol className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-4 [counter-reset:step]">
-          {process.map((step) => (
+      <Section id="experience" eyebrow="Experience" title="Where I’ve worked">
+        <ol className="grid">
+          {experience.map((role) => (
             <li
-              key={step.title}
-              className="reveal grid content-start gap-3 rounded-card border border-line bg-surface p-8 [counter-increment:step] before:font-serif before:text-fluid-2xl before:leading-none before:text-clay before:italic before:content-[counter(step,decimal-leading-zero)]"
+              key={`${role.company}-${role.period}`}
+              className="reveal grid gap-3 border-t border-line py-8 min-[48rem]:grid-cols-[13rem_1fr] min-[48rem]:gap-10"
             >
-              <h3 className="text-fluid-xl">{step.title}</h3>
-              <p className="text-fluid-sm text-muted">{step.description}</p>
+              <div className="grid content-start gap-1">
+                <p className="font-serif text-fluid-lg text-sage">{role.company}</p>
+                <p className="text-fluid-sm text-muted">{role.period}</p>
+              </div>
+              <div className="grid content-start gap-3">
+                <h3 className="text-fluid-xl">{role.title}</h3>
+                {role.summary && <p className="text-muted">{role.summary}</p>}
+                <ul className="grid gap-2 text-fluid-sm text-muted">
+                  {role.highlights.map((h) => (
+                    <li
+                      key={h}
+                      className="relative pl-5 before:absolute before:top-[0.7em] before:left-0 before:size-1.5 before:rounded-full before:bg-clay"
+                    >
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </li>
           ))}
+          <li className="grid gap-3 border-t border-line py-8 min-[48rem]:grid-cols-[13rem_1fr] min-[48rem]:gap-10">
+            <p className="font-serif text-fluid-lg text-sage">Before tech</p>
+            <ul className="grid gap-2 text-fluid-sm text-muted">
+              {earlierRoles.map((r) => (
+                <li key={r.company}>
+                  <span className="font-medium text-ink">{r.title}</span>, {r.company} · {r.period}
+                </li>
+              ))}
+            </ul>
+          </li>
         </ol>
-      </section>
+      </Section>
+
+      <Section id="skills" eyebrow="Toolkit" title="Technical skills">
+        <dl className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-4">
+          {skills.map((group) => (
+            <div
+              key={group.label}
+              className="reveal grid content-start gap-4 rounded-card border border-line bg-surface p-7"
+            >
+              <dt className="font-serif text-fluid-lg">{group.label}</dt>
+              <dd className="flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full bg-sage-soft px-3 py-1 text-fluid-sm font-medium text-ink"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
+
+      <Section id="education" eyebrow="Background" title="Education & languages">
+        <div className="grid gap-8 min-[48rem]:grid-cols-2">
+          <CredentialList heading="Education" items={education} />
+          <CredentialList heading="Languages" items={certifications} />
+        </div>
+      </Section>
     </>
   );
 }

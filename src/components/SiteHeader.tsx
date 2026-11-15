@@ -1,6 +1,6 @@
 'use client';
 
-import { faArrowUpRightFromSquare, faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -37,9 +37,6 @@ export default function SiteHeader() {
               {item.label}
             </Link>
           ))}
-          <a href={site.cvUrl} target="_blank" rel="noreferrer" className={navLink}>
-            CV <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-0.5 text-[0.7em]" />
-          </a>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -73,33 +70,17 @@ export default function SiteHeader() {
         </button>
 
         <nav aria-label="Mobile" className="grid gap-2">
-          {[...navItems, { to: site.cvUrl, label: 'CV' }].map((item) => {
-            const external = item.to.startsWith('http');
-            const className =
-              'w-fit font-serif text-fluid-3xl no-underline aria-[current=page]:italic aria-[current=page]:text-sage';
-            return external ? (
-              <a
-                key={item.to}
-                href={item.to}
-                target="_blank"
-                rel="noreferrer"
-                onClick={closeMenu}
-                className={className}
-              >
-                {item.label}
-              </a>
-            ) : (
-              <Link
-                key={item.to}
-                href={item.to}
-                aria-current={current(item.to)}
-                onClick={closeMenu}
-                className={className}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
+          {navItems.map((item) => (
+            <Link
+              key={item.to}
+              href={item.to}
+              aria-current={current(item.to)}
+              onClick={closeMenu}
+              className="w-fit font-serif text-fluid-3xl no-underline aria-[current=page]:italic aria-[current=page]:text-sage"
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
         <ul className="flex gap-5 text-2xl">

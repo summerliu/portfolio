@@ -17,11 +17,11 @@ export const metadata: Metadata = {
     default: `${site.name} — ${site.role}`,
     template: `%s — ${site.name}`,
   },
-  description: `${site.name} is a frontend developer from ${site.location} who turns ideas into thoughtful, well-crafted web experiences.`,
+  description: site.summary,
   icons: { icon: `${basePath}/favicon.ico`, apple: `${basePath}/logo192.png` },
   openGraph: {
     title: `${site.name} — ${site.role}`,
-    description: 'Turn your ideas into reality.',
+    description: site.summary,
     url: site.url,
     type: 'website',
   },
