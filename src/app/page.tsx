@@ -2,6 +2,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import { experience, profile, site, strengths } from '../content';
+import { routes } from '../routes';
 
 const [latest] = experience;
 
@@ -21,7 +22,7 @@ export default function Home() {
             with React, TypeScript and Next.js.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
-            <Link href="/about#experience" className="pill bg-ink text-paper">
+            <Link href={routes.experience} className="pill bg-ink text-paper">
               See my experience <FontAwesomeIcon icon={faArrowRight} />
             </Link>
             <a href={`mailto:${site.email}`} className="pill border border-line bg-surface">
@@ -64,7 +65,7 @@ export default function Home() {
               working on large-scale educational and e-commerce platforms used globally.
             </p>
           )}
-          <Link href="/about" className="link-accent text-ink">
+          <Link href={routes.about} className="link-accent text-ink">
             More about me <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </div>

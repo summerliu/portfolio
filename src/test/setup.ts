@@ -12,7 +12,7 @@ afterEach(() => {
 // Tests set the current route through `navigation`.
 vi.mock('next/navigation', async () => {
   const { navigation } = await import('./navigation');
-  return { usePathname: () => navigation.pathname };
+  return { useSelectedLayoutSegment: () => navigation.segment };
 });
 
 // next/image expects build-time image metadata; a plain <img> is enough for tests.

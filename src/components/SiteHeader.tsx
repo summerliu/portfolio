@@ -3,9 +3,10 @@
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useRef } from 'react';
-import { navItems, site, socialLinks } from '../content';
+import { site, socialLinks } from '../content';
+import { navItems, routes } from '../routes';
+import NavLink from './NavLink';
 import ThemeToggle from './ThemeToggle';
 
 const MENU_ID = 'site-menu';
@@ -19,23 +20,20 @@ const roundButton =
 export default function SiteHeader() {
   const menuRef = useRef<HTMLDivElement>(null);
   const closeMenu = () => menuRef.current?.hidePopover();
-  const pathname = usePathname();
-  // trailingSlash: true means the pathname may be '/about/' — compare without it.
-  const trim = (p: string) => p.replace(/(.)\/$/, '$1');
-  const current = (to: string) => (trim(pathname) === trim(to) ? ('page' as const) : undefined);
 
   return (
     <header className="sticky top-0 z-10 border-b border-line/60 bg-paper/80 backdrop-blur-md backdrop-saturate-150">
       <div className="wrap flex h-header items-center gap-6">
-        <Link href="/" className="mr-auto font-serif text-fluid-lg font-semibold tracking-tight no-underline">
+        <Link
+          href={routes.home}
+          className="mr-auto font-serif text-fluid-lg font-semibold tracking-tight no-underline"
+        >
           {site.name}
         </Link>
 
         <nav aria-label="Primary" className="hidden gap-1 md:flex">
           {navItems.map((item) => (
-            <Link key={item.to} href={item.to} aria-current={current(item.to)} className={navLink}>
-              {item.label}
-            </Link>
+            <NavLink key={item.href} item={item} className={navLink} />
           ))}
         </nav>
 
@@ -71,15 +69,12 @@ export default function SiteHeader() {
 
         <nav aria-label="Mobile" className="grid gap-2">
           {navItems.map((item) => (
-            <Link
-              key={item.to}
-              href={item.to}
-              aria-current={current(item.to)}
+            <NavLink
+              key={item.href}
+              item={item}
               onClick={closeMenu}
               className="w-fit font-serif text-fluid-3xl no-underline aria-[current=page]:italic aria-[current=page]:text-sage"
-            >
-              {item.label}
-            </Link>
+            />
           ))}
         </nav>
 

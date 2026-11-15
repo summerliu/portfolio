@@ -19,16 +19,6 @@ export const profile = [
   'I have a strong background in writing comprehensive test suites, optimising application performance and collaborating in agile, engineering-driven teams. I’m passionate about code quality, technical documentation, and shaping the next generation of intelligent systems.',
 ] as const;
 
-export interface NavItem {
-  to: string;
-  label: string;
-}
-
-export const navItems: readonly NavItem[] = [
-  { to: '/', label: 'Home' },
-  { to: '/about', label: 'About' },
-];
-
 export interface SocialLink {
   href: string;
   label: string;

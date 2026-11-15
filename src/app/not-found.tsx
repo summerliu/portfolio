@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { routes } from '../routes';
 
 export const metadata: Metadata = { title: 'Page not found' };
 
@@ -9,7 +10,7 @@ export default function NotFound() {
       <p className="eyebrow">404</p>
       <h1 className="text-fluid-3xl">This page wandered off.</h1>
       <p className="text-muted">
-        <Link href="/" className="underline">
+        <Link href={routes.home} className="underline">
           Head back home
         </Link>
         .
