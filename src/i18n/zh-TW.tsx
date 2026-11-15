@@ -138,7 +138,7 @@ export const zhTW = {
       },
     },
     certifications: {
-      toeic: { title: '多益（TOEIC）聽力與寫作', detail: '950 分' },
+      toeic: { title: '多益（TOEIC）聽力與閱讀', detail: '950 分' },
       ielts: { title: '雅思（IELTS）', detail: '總分 6.0' },
     },
   },

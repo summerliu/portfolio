@@ -139,7 +139,7 @@ export const en = {
       },
     },
     certifications: {
-      toeic: { title: 'TOEIC Listening and Writing', detail: 'Score 950' },
+      toeic: { title: 'TOEIC Listening and Reading', detail: 'Score 950' },
       ielts: { title: 'IELTS', detail: 'Overall 6.0' },
     },
   },
