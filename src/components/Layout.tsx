@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router';
-import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
+import SiteHeader from './SiteHeader';
 
 export default function Layout() {
   const { pathname } = useLocation();
 
   // Start each page at the top, like a regular navigation would.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: re-run whenever the route changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [pathname]);

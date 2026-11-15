@@ -1,10 +1,10 @@
+import { faArrowUpRightFromSquare, faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef } from 'react';
 import { Link, NavLink } from 'react-router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpRightFromSquare, faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { navItems, site, socialLinks } from '../content';
-import ThemeToggle from './ThemeToggle';
 import styles from './SiteHeader.module.css';
+import ThemeToggle from './ThemeToggle';
 
 const MENU_ID = 'site-menu';
 
@@ -32,12 +32,7 @@ export default function SiteHeader() {
 
         <div className={styles.actions}>
           <ThemeToggle />
-          <button
-            type="button"
-            className={styles.menuButton}
-            popoverTarget={MENU_ID}
-            aria-label="Open menu"
-          >
+          <button type="button" className={styles.menuButton} popoverTarget={MENU_ID} aria-label="Open menu">
             <FontAwesomeIcon icon={faBars} />
           </button>
         </div>

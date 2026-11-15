@@ -38,7 +38,7 @@
 
 .title {
   font-size: var(--step-4);
-  font-variation-settings: 'opsz' 144;
+  font-variation-settings: "opsz" 144;
   max-inline-size: 11ch;
 }
 

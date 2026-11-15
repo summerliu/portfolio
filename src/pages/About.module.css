@@ -18,7 +18,7 @@
 
   /* Offset frame behind the arch-shaped photo */
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: var(--offset) calc(-1 * var(--offset)) calc(-1 * var(--offset)) var(--offset);
     z-index: -1;
@@ -45,7 +45,7 @@
 
 .name {
   font-size: var(--step-4);
-  font-variation-settings: 'opsz' 144;
+  font-variation-settings: "opsz" 144;
   color: var(--ink);
 }
 

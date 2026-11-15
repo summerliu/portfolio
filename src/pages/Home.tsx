@@ -1,7 +1,7 @@
-import { Link } from 'react-router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faArrowRight, faBroom, faHeart, faPencilRuler, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router';
 import { site } from '../content';
 import styles from './Home.module.css';
 
@@ -12,8 +12,16 @@ interface Value {
 }
 
 const values: readonly Value[] = [
-  { title: 'User friendly', description: 'Interfaces that feel obvious, accessible and fast.', icon: faUsers },
-  { title: 'Aesthetic design', description: 'Considered typography, spacing and motion.', icon: faPencilRuler },
+  {
+    title: 'User friendly',
+    description: 'Interfaces that feel obvious, accessible and fast.',
+    icon: faUsers,
+  },
+  {
+    title: 'Aesthetic design',
+    description: 'Considered typography, spacing and motion.',
+    icon: faPencilRuler,
+  },
   { title: 'Clean code', description: 'Readable, typed and easy to maintain.', icon: faBroom },
   { title: 'Made with heart', description: 'Care for the details others skip.', icon: faHeart },
 ];
