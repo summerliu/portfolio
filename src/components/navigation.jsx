@@ -1,8 +1,7 @@
-import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 import rwd from '../styles/rwd';
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faGithub, faMedium } from '@fortawesome/free-brands-svg-icons';
