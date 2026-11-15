@@ -1,0 +1,151 @@
+/* --------------------------------------------------------------- intro */
+.intro {
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding-block: clamp(3rem, 2rem + 5vw, 6rem);
+
+  @media (width >= 52rem) {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  }
+}
+
+.portrait {
+  position: relative;
+  max-inline-size: 30rem;
+  margin-inline: auto;
+  inline-size: 100%;
+
+  /* Offset frame behind the arch-shaped photo */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 1.25rem -1.25rem -1.25rem 1.25rem;
+    z-index: -1;
+    border-radius: 999px 999px var(--radius-lg) var(--radius-lg);
+    background: var(--sage-soft);
+  }
+
+  & img {
+    inline-size: 100%;
+    block-size: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 35% 30%;
+    border-radius: 999px 999px var(--radius-lg) var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+}
+
+.text {
+  display: grid;
+  gap: 1.1rem;
+  color: var(--ink-muted);
+}
+
+.name {
+  font-size: var(--step-4);
+  font-variation-settings: 'opsz' 144;
+  color: var(--ink);
+}
+
+.lede {
+  font-family: var(--font-serif);
+  font-size: var(--step-1);
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin-block-start: 0.75rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: var(--step--1);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    translate 200ms var(--ease-out),
+    box-shadow 200ms var(--ease-out);
+
+  & svg {
+    font-size: 0.85em;
+  }
+
+  &:hover {
+    translate: 0 -2px;
+    box-shadow: var(--shadow);
+  }
+}
+
+.textLink {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  border-block-end: 2px solid var(--clay);
+}
+
+/* ------------------------------------------------------------- process */
+.process {
+  display: grid;
+  gap: 2.5rem;
+  padding-block-start: var(--section);
+}
+
+.processHeader {
+  display: grid;
+  gap: 0.5rem;
+
+  & h2 {
+    font-size: var(--step-3);
+  }
+}
+
+.steps {
+  counter-reset: step;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  counter-increment: step;
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+
+  &::before {
+    content: counter(step, decimal-leading-zero);
+    font-family: var(--font-serif);
+    font-size: var(--step-3);
+    font-style: italic;
+    line-height: 1;
+    color: var(--clay);
+  }
+
+  & h3 {
+    font-size: var(--step-2);
+  }
+
+  & p {
+    color: var(--ink-muted);
+    font-size: var(--step--1);
+  }
+}
