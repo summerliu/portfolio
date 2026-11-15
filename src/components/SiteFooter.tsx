@@ -1,14 +1,18 @@
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { site, socialLinks } from '../content';
+import { getDictionary, type Locale } from '../i18n';
 
-export default function SiteFooter() {
+export default function SiteFooter({ locale }: { locale: Locale }) {
+  const { footer, meta } = getDictionary(locale);
   return (
     <footer className="mt-section border-t border-line bg-sunk">
       <div className="wrap grid gap-4 pt-section pb-[calc(var(--spacing-section)*0.75)]">
-        <p className="eyebrow">Get in touch</p>
-        <h2 className="max-w-[18ch] text-fluid-2xl">
-          Have an idea? <em className="text-sage">Let’s build it.</em>
+        <p className="eyebrow">{footer.eyebrow}</p>
+        <h2 className="max-w-[18ch] text-fluid-2xl zh:max-w-none">
+          {footer.heading}
+          {meta.space}
+          <em className="text-sage">{footer.emphasis}</em>
         </h2>
         <a href={`mailto:${site.email}`} className="link-accent mt-2 gap-3 pb-0.5 text-fluid-lg font-medium">
           {site.email}

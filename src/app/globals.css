@@ -19,6 +19,9 @@
   }
 }
 
+/* `zh:` styles Traditional Chinese pages (lang is inherited, so this matches any element in them). */
+@custom-variant zh (&:lang(zh-TW));
+
 @theme {
   /* Colour — warm paper + sage (the original brand green) + clay accent */
   --color-paper: light-dark(oklch(98.4% 0.008 85), oklch(17.5% 0.008 60));
@@ -32,8 +35,11 @@
   --color-clay: light-dark(oklch(56% 0.14 40), oklch(74% 0.12 45));
 
   /* Type */
-  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-serif: "Fraunces Variable", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans:
+    "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang TC", "Noto Sans TC",
+    "Microsoft JhengHei", sans-serif;
+  --font-serif:
+    "Fraunces Variable", ui-serif, Georgia, "Times New Roman", "Songti TC", "Noto Serif TC", "PMingLiU", serif;
 
   --text-fluid-sm: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
   --text-fluid-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
@@ -122,6 +128,28 @@
     border-radius: 4px;
   }
 
+  /*
+   * Traditional Chinese: CJK has no true italics (browsers fake an oblique slant), so
+   * emphasis is carried by colour/weight instead; and CJK reads better a little looser.
+   */
+  :lang(zh-TW) {
+    & em {
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    & h1,
+    & h2,
+    & h3 {
+      letter-spacing: 0;
+    }
+
+    & p,
+    & li {
+      line-height: 1.8;
+    }
+  }
+
   ::selection {
     background: var(--color-sage-soft);
     color: var(--color-ink);
@@ -140,6 +168,11 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-sage);
+
+  /* Wide tracking suits uppercase Latin, but spaces CJK characters apart. */
+  &:lang(zh-TW) {
+    letter-spacing: 0.04em;
+  }
 }
 
 /* Underlined text link with a clay rule and a nudging arrow */
