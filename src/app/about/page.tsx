@@ -1,8 +1,12 @@
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import profile from '../assets/profile.jpg';
-import { site } from '../content';
-import styles from './About.module.css';
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import profile from '../../assets/profile.jpg';
+import { site } from '../../content';
+import styles from './about.module.css';
+
+export const metadata: Metadata = { title: 'About' };
 
 interface Step {
   title: string;
@@ -30,17 +34,13 @@ const process: readonly Step[] = [
 export default function About() {
   return (
     <>
-      <title>{`About — ${site.name}`}</title>
-
       <section className={`container ${styles.intro}`}>
         <figure className={styles.portrait}>
-          <img
+          <Image
             src={profile}
             alt="Summer Liu smiling by a riverside walkway in autumn"
-            width={1200}
-            height={1200}
-            decoding="async"
-            fetchPriority="high"
+            sizes="(min-width: 52rem) 30rem, 100vw"
+            priority
           />
         </figure>
 

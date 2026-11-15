@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom/vitest';
 import { cleanup } from '@testing-library/react';
+import { createElement, type ImgHTMLAttributes } from 'react';
 import { afterEach, vi } from 'vitest';
 
 afterEach(() => {
@@ -7,6 +8,27 @@ afterEach(() => {
   localStorage.clear();
   delete document.documentElement.dataset.theme;
 });
+
+// Tests set the current route through `navigation`.
+vi.mock('next/navigation', async () => {
+  const { navigation } = await import('./navigation');
+  return { usePathname: () => navigation.pathname };
+});
+
+// next/image expects build-time image metadata; a plain <img> is enough for tests.
+vi.mock('next/image', () => ({
+  default: ({
+    src,
+    alt,
+    priority: _p,
+    preload: _pl,
+    ...rest
+  }: ImgHTMLAttributes<HTMLImageElement> & {
+    src: string | { src: string };
+    priority?: boolean;
+    preload?: boolean;
+  }) => createElement('img', { ...rest, alt, src: typeof src === 'string' ? src : src.src }),
+}));
 
 // jsdom implements neither matchMedia nor the Popover API.
 Object.defineProperty(window, 'matchMedia', {
@@ -23,4 +45,3 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 HTMLElement.prototype.hidePopover ??= vi.fn();
-window.scrollTo = vi.fn() as typeof window.scrollTo;

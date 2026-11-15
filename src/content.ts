@@ -5,6 +5,7 @@ export const site = {
   name: 'Summer Liu',
   role: 'Frontend Developer',
   location: 'Taiwan',
+  url: 'https://summerliu.github.io/portfolio/',
   email: 'summer.ycliu@gmail.com',
   cvUrl: 'https://drive.google.com/file/d/1VxylXI7z7ObyPm48iZ71ebPbfCv_RRgN/view?usp=sharing',
 } as const;

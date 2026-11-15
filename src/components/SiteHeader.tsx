@@ -1,7 +1,10 @@
+'use client';
+
 import { faArrowUpRightFromSquare, faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useRef } from 'react';
-import { Link, NavLink } from 'react-router';
 import { navItems, site, socialLinks } from '../content';
 import styles from './SiteHeader.module.css';
 import ThemeToggle from './ThemeToggle';
@@ -11,19 +14,23 @@ const MENU_ID = 'site-menu';
 export default function SiteHeader() {
   const menuRef = useRef<HTMLDivElement>(null);
   const closeMenu = () => menuRef.current?.hidePopover();
+  const pathname = usePathname();
+  // trailingSlash: true means the pathname may be '/about/' — compare without it.
+  const trim = (p: string) => p.replace(/(.)\/$/, '$1');
+  const current = (to: string) => (trim(pathname) === trim(to) ? ('page' as const) : undefined);
 
   return (
     <header className={styles.header}>
       <div className={`container ${styles.bar}`}>
-        <Link to="/" className={styles.brand} viewTransition>
+        <Link href="/" className={styles.brand}>
           {site.name}
         </Link>
 
         <nav aria-label="Primary" className={styles.desktopNav}>
           {navItems.map((item) => (
-            <NavLink key={item.to} to={item.to} end className={styles.navLink} viewTransition>
+            <Link key={item.to} href={item.to} aria-current={current(item.to)} className={styles.navLink}>
               {item.label}
-            </NavLink>
+            </Link>
           ))}
           <a href={site.cvUrl} target="_blank" rel="noreferrer" className={styles.navLink}>
             CV <FontAwesomeIcon icon={faArrowUpRightFromSquare} className={styles.external} />
@@ -51,9 +58,9 @@ export default function SiteHeader() {
 
         <nav aria-label="Mobile" className={styles.menuNav}>
           {navItems.map((item) => (
-            <NavLink key={item.to} to={item.to} end onClick={closeMenu} viewTransition>
+            <Link key={item.to} href={item.to} aria-current={current(item.to)} onClick={closeMenu}>
               {item.label}
-            </NavLink>
+            </Link>
           ))}
           <a href={site.cvUrl} target="_blank" rel="noreferrer" onClick={closeMenu}>
             CV

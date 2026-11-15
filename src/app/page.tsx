@@ -1,9 +1,9 @@
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faArrowRight, faBroom, faHeart, faPencilRuler, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router';
+import Link from 'next/link';
 import { site } from '../content';
-import styles from './Home.module.css';
+import styles from './home.module.css';
 
 interface Value {
   title: string;
@@ -29,8 +29,6 @@ const values: readonly Value[] = [
 export default function Home() {
   return (
     <>
-      <title>{`${site.name} — ${site.role}`}</title>
-
       <section className={styles.hero}>
         <div className={styles.glow} aria-hidden="true" />
         <div className={`container ${styles.heroInner}`}>
@@ -42,7 +40,7 @@ export default function Home() {
             Turn your <em>ideas</em> into <em>reality</em>.
           </p>
           <div className={styles.ctas}>
-            <Link to="/about" className={styles.primary} viewTransition>
+            <Link href="/about" className={styles.primary}>
               About me <FontAwesomeIcon icon={faArrowRight} />
             </Link>
             <a href={site.cvUrl} target="_blank" rel="noreferrer" className={styles.secondary}>
@@ -79,7 +77,7 @@ export default function Home() {
             specialize in creating websites for clients ranging from individuals to small businesses.
           </p>
           <p>What would you do if you had a software expert available at your fingertips?</p>
-          <Link to="/about" className={styles.textLink} viewTransition>
+          <Link href="/about" className={styles.textLink}>
             More about me <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </div>

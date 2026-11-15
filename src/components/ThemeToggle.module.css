@@ -17,3 +17,30 @@
     rotate: 20deg;
   }
 }
+
+/* Show the icon for the theme you'd switch *to* */
+.sun {
+  display: none;
+}
+
+:global(:root[data-theme="dark"]) {
+  & .sun {
+    display: block;
+  }
+
+  & .moon {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(:root:not([data-theme="light"])) {
+    & .sun {
+      display: block;
+    }
+
+    & .moon {
+      display: none;
+    }
+  }
+}
