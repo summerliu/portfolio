@@ -2,13 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <title>Summer Liu — Frontend Developer</title>
+    <meta name="description" content="Summer Liu is a frontend developer from Taiwan who turns ideas into thoughtful, well-crafted web experiences." />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbf9f4" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1c1915" />
+    <meta property="og:title" content="Summer Liu — Frontend Developer" />
+    <meta property="og:description" content="Turn your ideas into reality." />
+    <meta property="og:url" content="https://summerliu.dev/" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/logo192.png" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600|Playfair+Display:400,400i&display=swap" rel="stylesheet" />
-    <title>Summer Liu</title>
+    <script>
+      // Apply a saved theme before first paint to avoid a flash.
+      try {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+      } catch {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
