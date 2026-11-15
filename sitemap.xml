@@ -1,17 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <url>
 <loc>https://summerliu.github.io/portfolio/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://summerliu.github.io/portfolio/" />
+<xhtml:link rel="alternate" hreflang="zh-TW" href="https://summerliu.github.io/portfolio/zh-TW/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://summerliu.github.io/portfolio/" />
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 <url>
 <loc>https://summerliu.github.io/portfolio/experience/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://summerliu.github.io/portfolio/experience/" />
+<xhtml:link rel="alternate" hreflang="zh-TW" href="https://summerliu.github.io/portfolio/zh-TW/experience/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://summerliu.github.io/portfolio/experience/" />
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>
 <url>
 <loc>https://summerliu.github.io/portfolio/about/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://summerliu.github.io/portfolio/about/" />
+<xhtml:link rel="alternate" hreflang="zh-TW" href="https://summerliu.github.io/portfolio/zh-TW/about/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://summerliu.github.io/portfolio/about/" />
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://summerliu.github.io/portfolio/zh-TW/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://summerliu.github.io/portfolio/" />
+<xhtml:link rel="alternate" hreflang="zh-TW" href="https://summerliu.github.io/portfolio/zh-TW/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://summerliu.github.io/portfolio/" />
+<changefreq>monthly</changefreq>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://summerliu.github.io/portfolio/zh-TW/experience/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://summerliu.github.io/portfolio/experience/" />
+<xhtml:link rel="alternate" hreflang="zh-TW" href="https://summerliu.github.io/portfolio/zh-TW/experience/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://summerliu.github.io/portfolio/experience/" />
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://summerliu.github.io/portfolio/zh-TW/about/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://summerliu.github.io/portfolio/about/" />
+<xhtml:link rel="alternate" hreflang="zh-TW" href="https://summerliu.github.io/portfolio/zh-TW/about/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://summerliu.github.io/portfolio/about/" />
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>

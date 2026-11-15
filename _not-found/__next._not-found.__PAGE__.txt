@@ -1,27 +1,28 @@
-2:"$Sreact.fragment"
-3:"/portfolio/_next/static/chunks/08mika-44sn50.js"
-4:"/portfolio/_next/static/chunks/0m__ifyny1di3.js"
-5:I[39756,["$3","$4"],"default"]
-6:I[37457,["$3","$4"],"default"]
-b:I[22016,["$3","$4"],""]
-c:I[97367,["$3","$4"],"OutletBoundary"]
+1:"$Sreact.fragment"
+2:"/portfolio/_next/static/chunks/08mika-44sn50.js"
+3:I[22016,["$2"],""]
+7:I[39756,["$2"],"default"]
+8:I[37457,["$2"],"default"]
+c:I[97367,["$2"],"OutletBoundary"]
 d:"$Sreact.suspense"
 10:"ViewportBoundary"
-11:I[97367,["$3","$4"],"$10"]
+11:I[97367,["$2"],"$10"]
 12:"MetadataBoundary"
-13:I[97367,["$3","$4"],"$12"]
-14:I[27201,["$3","$4"],"IconMark"]
-8:X
-8:C
-9:X
-a:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[["$","section",null,{"className":"wrap grid gap-5 py-section","children":[["$","p",null,{"className":"eyebrow","children":"404"}],["$","h1",null,{"className":"text-fluid-3xl","children":"This page wandered off."}],["$","p",null,{"className":"text-muted","children":[["$","$Lb",null,{"href":"/","className":"underline","children":"Head back home"}],"."]}]]}],null,["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]]}],"p":"$@f","v":null,"s":"$9"}}]]
-1:[["children",{"s":"/_not-found","h":64,"d":{"r":["$","$2","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
-0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L11",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#fbf9f4","media":"(prefers-color-scheme: light)"}],["$","meta","3",{"name":"theme-color","content":"#1c1915","media":"(prefers-color-scheme: dark)"}]]}],["$","$L13",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Page not found — Summer Liu"}],["$","meta","1",{"name":"description","content":"Senior Frontend Engineer with over 5 years of experience building high-performance, scalable and maintainable web applications with React, TypeScript and Next.js."}],["$","link","2",{"rel":"manifest","href":"/portfolio/manifest.webmanifest"}],["$","meta","3",{"property":"og:title","content":"Summer Liu — Senior Frontend Engineer"}],["$","meta","4",{"property":"og:description","content":"Senior Frontend Engineer with over 5 years of experience building high-performance, scalable and maintainable web applications with React, TypeScript and Next.js."}],["$","meta","5",{"property":"og:url","content":"https://summerliu.github.io/portfolio/"}],["$","meta","6",{"property":"og:type","content":"website"}],["$","meta","7",{"name":"twitter:card","content":"summary"}],["$","meta","8",{"name":"twitter:title","content":"Summer Liu — Senior Frontend Engineer"}],["$","meta","9",{"name":"twitter:description","content":"Senior Frontend Engineer with over 5 years of experience building high-performance, scalable and maintainable web applications with React, TypeScript and Next.js."}],["$","link","10",{"rel":"icon","href":"/portfolio/favicon.ico"}],["$","link","11",{"rel":"apple-touch-icon","href":"/portfolio/logo192.png"}],["$","$L14","12",{}]]}]}],null]}],null]}],"p":"$@15","v":null,"s":"$9"}},"a":"$@16","u":"$@17","b":"klQlI-StPOOMlJudpTd7g"}
+13:I[97367,["$2"],"$12"]
+14:I[27201,["$2"],"IconMark"]
+:HL["/portfolio/_next/static/chunks/17pcqivbns7zl.css","style"]
+5:X
+a:X
+a:C
+b:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[null,null,["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]]}],"p":"$@f","v":null,"s":"$5"}}]]
+6:[["children",{"s":"/_not-found","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","template":["$","$L8",null,{}]}]]}],"p":"$@9","v":"$a","s":"$5"},"c":"$Qb"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/portfolio/_next/static/chunks/17pcqivbns7zl.css","precedence":"next"}],["$","script","script-0",{"src":"/portfolio/_next/static/chunks/08mika-44sn50.js","async":true}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"try{const t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch{}"}}]}],["$","body",null,{"children":["$","main",null,{"className":"wrap grid flex-1 content-center gap-10 py-section","children":[["$","p",null,{"className":"eyebrow","children":"404"}],["$","div",null,{"className":"grid gap-3","children":[["$","h1",null,{"className":"text-fluid-3xl","children":"This page wandered off."}],["$","p",null,{"className":"text-muted","children":["$","$L3",null,{"href":"/","className":"underline","children":"Head back home"}]}]]}],["$","div",null,{"lang":"zh-TW","className":"grid gap-3","children":[["$","p",null,{"className":"font-serif text-fluid-2xl","children":"找不到這個頁面。"}],["$","p",null,{"className":"text-muted","children":["$","$L3",null,{"href":"/zh-TW","hrefLang":"zh-TW","className":"underline","children":"返回首頁"}]}]]}]]}]}]]}]]}],"p":"$@4","v":null,"s":"$5"},"c":"$Q6"},"h":{"r":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L11",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#fbf9f4","media":"(prefers-color-scheme: light)"}],["$","meta","3",{"name":"theme-color","content":"#1c1915","media":"(prefers-color-scheme: dark)"}]]}],["$","$L13",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Page not found · 找不到頁面 — Summer Liu"}],["$","link","1",{"rel":"manifest","href":"/portfolio/manifest.webmanifest"}],["$","link","2",{"rel":"icon","href":"/portfolio/favicon.ico?favicon.3etxnfckdpvm1.ico","sizes":"16x16","type":"image/x-icon"}],["$","$L14","3",{}]]}]}],null]}],null]}],"p":"$@15","v":null,"s":"$5"}},"a":"$@16","u":"$@17","b":"HbrR0cAiiVovG-cbxdGTz"}
 e:null
+5:300
 17:true
-9:300
-9:C
+5:C
 16:0
-7:"$undefined"
+9:"$undefined"
+4:"$undefined"
 15:"$undefined"
 f:"$undefined"

@@ -1,0 +1,7 @@
+:HL["/portfolio/_next/static/chunks/3q4enukp5uhwy.css","style"]
+:HL["/portfolio/_next/static/chunks/17pcqivbns7zl.css","style"]
+:HC["/",""]
+3:[["children",{"s":"__PAGE__","h":160}]]
+2:[["children",{"s":"experience","h":64,"c":"$Q3"}]]
+1:[["children",{"s":"zh-TW","h":48,"c":"$Q2"}]]
+0:{"b":"HbrR0cAiiVovG-cbxdGTz","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
