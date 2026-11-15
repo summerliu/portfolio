@@ -23,6 +23,8 @@ function spaFallback(): Plugin {
 }
 
 export default defineConfig({
+  // Served as a GitHub Pages project site at https://summerliu.github.io/portfolio/
+  base: '/portfolio/',
   plugins: [react(), spaFallback()],
   test: {
     environment: 'jsdom',

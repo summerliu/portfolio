@@ -1,6 +1,6 @@
 # summerliu.dev
 
-Personal portfolio of Summer Liu, a frontend developer from Taiwan. Live at **https://summerliu.dev/**.
+Personal portfolio of Summer Liu, a frontend developer from Taiwan. Live at **https://summerliu.github.io/portfolio/**.
 
 ## Stack
 
@@ -42,13 +42,16 @@ src/
   components/         # Layout, SiteHeader, SiteFooter, ThemeToggle
   pages/              # Home, About, NotFound (each with a CSS module)
   styles/global.css   # design tokens, reset, base styles, utilities
-public/               # static files copied as-is (CNAME, favicon, manifest)
+public/               # static files copied as-is (favicon, manifest)
 ```
 
 ## Deployment
 
-`npm run deploy` publishes to GitHub Pages via the `gh-pages` branch. `public/CNAME` ships with every
-build so the custom domain stays configured, and the build writes `dist/404.html` so client-side routes
-like `/about` work on a hard refresh.
+`npm run deploy` publishes to GitHub Pages via the `gh-pages` branch. The site is a project site, so
+Vite's `base` and the router's `basename` are both `/portfolio/`. The build writes `dist/404.html` so
+client-side routes like `/portfolio/about` work on a hard refresh.
+
+To move to a custom domain later, add `public/CNAME`, set `base: '/'` in `vite.config.ts`, and set the
+domain under the repo's Settings → Pages.
 
 Never commit directly to `gh-pages`.
