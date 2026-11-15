@@ -27,7 +27,6 @@ npm run dev        # start the dev server
 | ------------------- | ------------------------------------------------- |
 | `npm run dev`       | Dev server at http://localhost:3000/portfolio     |
 | `npm run build`     | Typecheck and export the static site to `out/`    |
-| `npm start`         | Serve `out/` locally                              |
 | `npm run lint`      | Lint and format check (`lint:fix` to apply fixes) |
 | `npm run typecheck` | TypeScript type check                             |
 | `npm test`          | Run tests once (`test:watch` for watch mode)      |

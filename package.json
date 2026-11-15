@@ -10,7 +10,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "npx serve out",
     "typecheck": "tsc",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
