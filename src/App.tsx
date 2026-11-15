@@ -1,27 +1,19 @@
-import { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router';
+import { BrowserRouter, Route, Routes } from 'react-router';
+import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
-import Projects from './pages/Projects';
-import Footer from './components/footer';
-import Navigation from './components/navigation';
+import NotFound from './pages/NotFound';
 
-function App() {
-    const [isOpen, setIsOpen] = useState(false);
-
-    return (
-        <div style={{maxWidth: '2560px', minWidth: '320px', overflowX: 'hidden'}}>
-            <BrowserRouter>
-                <Navigation isOpen={isOpen} setIsOpen={setIsOpen}/>
-                <Routes>
-                    <Route element={<Home/>} path="/"/>
-                    <Route element={<About/>} path="/about"/>
-                    <Route element={<Projects/>} path="/projects"/>
-                </Routes>
-                <Footer/>
-            </BrowserRouter>
-        </div>
-    );
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App;
