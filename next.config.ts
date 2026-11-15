@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   // The next/image optimizer needs a server; serve images as-is.
   images: { unoptimized: true },
+  // Type-check every <Link href> against the routes in app/.
+  typedRoutes: true,
 };
 
 export default nextConfig;

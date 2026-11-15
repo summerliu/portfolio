@@ -1,52 +1,21 @@
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import type { ReactNode } from 'react';
+import Link from 'next/link';
 import portrait from '../../assets/profile.jpg';
-import {
-  type Credential,
-  certifications,
-  earlierRoles,
-  education,
-  experience,
-  profile,
-  site,
-  skills,
-} from '../../content';
+import PageSection from '../../components/PageSection';
+import { type Credential, certifications, education, profile, site, skills } from '../../content';
+import { routes } from '../../routes';
 
 export const metadata: Metadata = {
   title: 'About',
-  description: `Experience, skills and education of ${site.name}, ${site.role} in ${site.location}.`,
+  description: `About ${site.name}, ${site.role} in ${site.location}: profile, technical skills, education and languages.`,
 };
 
 // A true semicircle on a 4:5 box: 50% of the width across, 40% of the height down.
 // (rounded-t-full would make the browser scale every corner down, flattening the bottom.)
 const roundTop = 'rounded-t-[50%_40%] rounded-b-card';
-
-function Section({
-  id,
-  eyebrow,
-  title,
-  children,
-}: {
-  id: string;
-  eyebrow: string;
-  title: string;
-  children: ReactNode;
-}) {
-  return (
-    <section id={id} className="wrap grid gap-10 pt-section" aria-labelledby={`${id}-heading`}>
-      <header className="grid gap-2">
-        <p className="eyebrow">{eyebrow}</p>
-        <h2 id={`${id}-heading`} className="text-fluid-2xl">
-          {title}
-        </h2>
-      </header>
-      {children}
-    </section>
-  );
-}
 
 function CredentialList({ heading, items }: { heading: string; items: readonly Credential[] }) {
   return (
@@ -96,51 +65,14 @@ export default function About() {
             <a href={`mailto:${site.email}`} className="pill bg-ink text-paper">
               <FontAwesomeIcon icon={faEnvelope} /> Say hello
             </a>
+            <Link href={routes.experience} className="link-accent text-ink">
+              See my experience <FontAwesomeIcon icon={faArrowRight} />
+            </Link>
           </div>
         </div>
       </section>
 
-      <Section id="experience" eyebrow="Experience" title="Where I’ve worked">
-        <ol className="grid">
-          {experience.map((role) => (
-            <li
-              key={`${role.company}-${role.period}`}
-              className="reveal grid gap-3 border-t border-line py-8 min-[48rem]:grid-cols-[13rem_1fr] min-[48rem]:gap-10"
-            >
-              <div className="grid content-start gap-1">
-                <p className="font-serif text-fluid-lg text-sage">{role.company}</p>
-                <p className="text-fluid-sm text-muted">{role.period}</p>
-              </div>
-              <div className="grid content-start gap-3">
-                <h3 className="text-fluid-xl">{role.title}</h3>
-                {role.summary && <p className="text-muted">{role.summary}</p>}
-                <ul className="grid gap-2 text-fluid-sm text-muted">
-                  {role.highlights.map((h) => (
-                    <li
-                      key={h}
-                      className="relative pl-5 before:absolute before:top-[0.7em] before:left-0 before:size-1.5 before:rounded-full before:bg-clay"
-                    >
-                      {h}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </li>
-          ))}
-          <li className="grid gap-3 border-t border-line py-8 min-[48rem]:grid-cols-[13rem_1fr] min-[48rem]:gap-10">
-            <p className="font-serif text-fluid-lg text-sage">Before tech</p>
-            <ul className="grid gap-2 text-fluid-sm text-muted">
-              {earlierRoles.map((r) => (
-                <li key={r.company}>
-                  <span className="font-medium text-ink">{r.title}</span>, {r.company} · {r.period}
-                </li>
-              ))}
-            </ul>
-          </li>
-        </ol>
-      </Section>
-
-      <Section id="skills" eyebrow="Toolkit" title="Technical skills">
+      <PageSection id="skills" eyebrow="Toolkit" title="Technical skills">
         <dl className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-4">
           {skills.map((group) => (
             <div
@@ -161,14 +93,14 @@ export default function About() {
             </div>
           ))}
         </dl>
-      </Section>
+      </PageSection>
 
-      <Section id="education" eyebrow="Background" title="Education & languages">
+      <PageSection id="education" eyebrow="Background" title="Education & languages">
         <div className="grid gap-8 min-[48rem]:grid-cols-2">
           <CredentialList heading="Education" items={education} />
           <CredentialList heading="Languages" items={certifications} />
         </div>
-      </Section>
+      </PageSection>
     </>
   );
 }
