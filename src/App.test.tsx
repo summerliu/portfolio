@@ -54,13 +54,14 @@ describe('navigation', () => {
     expect(within(nav).getByRole('link', { name: 'Home' })).not.toHaveAttribute('aria-current');
   });
 
-  it('links to email, CV and social profiles', () => {
+  it('links to email and social profiles, with no CV link', () => {
     renderPage(<Home />);
     expect(screen.getByRole('link', { name: new RegExp(site.email) })).toHaveAttribute(
       'href',
       `mailto:${site.email}`,
     );
-    expect(screen.getByRole('link', { name: 'View CV' })).toHaveAttribute('href', site.cvUrl);
+    expect(screen.getByRole('link', { name: 'Say hello' })).toHaveAttribute('href', `mailto:${site.email}`);
+    expect(screen.queryByRole('link', { name: /\bCV\b/ })).not.toBeInTheDocument();
     expect(screen.getByRole('link', { name: /See my experience/ })).toHaveAttribute(
       'href',
       '/about#experience',

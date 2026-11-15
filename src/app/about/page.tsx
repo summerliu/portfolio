@@ -1,4 +1,4 @@
-import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { Metadata } from 'next';
 import Image from 'next/image';
@@ -93,11 +93,8 @@ export default function About() {
           <p className="font-serif text-fluid-lg leading-[1.45] text-ink">{profile[0]}</p>
           <p>{profile[1]}</p>
           <div className="mt-3 flex flex-wrap items-center gap-6">
-            <a href={site.cvUrl} target="_blank" rel="noreferrer" className="pill bg-ink text-paper">
-              View my CV <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-[0.85em]" />
-            </a>
-            <a href={`mailto:${site.email}`} className="link-accent text-ink">
-              Say hello
+            <a href={`mailto:${site.email}`} className="pill bg-ink text-paper">
+              <FontAwesomeIcon icon={faEnvelope} /> Say hello
             </a>
           </div>
         </div>

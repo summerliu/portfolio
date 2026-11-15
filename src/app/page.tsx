@@ -24,13 +24,8 @@ export default function Home() {
             <Link href="/about#experience" className="pill bg-ink text-paper">
               See my experience <FontAwesomeIcon icon={faArrowRight} />
             </Link>
-            <a
-              href={site.cvUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="pill border border-line bg-surface"
-            >
-              View CV
+            <a href={`mailto:${site.email}`} className="pill border border-line bg-surface">
+              Say hello
             </a>
           </div>
         </div>

@@ -10,7 +10,6 @@ export const site = {
   location: 'Taipei, Taiwan',
   url: 'https://summerliu.github.io/portfolio/',
   email: 'summer.ycliu@gmail.com',
-  cvUrl: 'https://drive.google.com/file/d/1VxylXI7z7ObyPm48iZ71ebPbfCv_RRgN/view?usp=sharing',
   summary:
     'Senior Frontend Engineer with over 5 years of experience building high-performance, scalable and maintainable web applications with React, TypeScript and Next.js.',
 } as const;
