@@ -1,14 +1,17 @@
 import type { MetadataRoute } from 'next';
-import { site } from '../content';
-import { routes } from '../routes';
+import { locales } from '../i18n';
+import { absoluteUrl, languageAlternates, pages } from '../routes';
 
 export const dynamic = 'force-static';
 
+/** Every page in every language, each listing its translations (hreflang). */
 export default function sitemap(): MetadataRoute.Sitemap {
-  // site.url ends in '/', and trailingSlash: true means every page URL does too.
-  return Object.values(routes).map((path) => ({
-    url: new URL(path === '/' ? '' : `${path.slice(1)}/`, site.url).href,
-    changeFrequency: 'monthly',
-    priority: path === '/' ? 1 : 0.8,
-  }));
+  return locales.flatMap((locale) =>
+    pages.map((page) => ({
+      url: absoluteUrl(locale, page),
+      changeFrequency: 'monthly' as const,
+      priority: page === 'home' ? 1 : 0.8,
+      alternates: { languages: languageAlternates(page) },
+    })),
+  );
 }

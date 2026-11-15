@@ -12,7 +12,7 @@ interface NavLinkProps {
 
 /** A nav link that marks itself aria-current="page" when its section is active. */
 export default function NavLink({ item, className, onClick }: NavLinkProps) {
-  // Segment-based matching: no pathname parsing, and trailingSlash doesn't matter.
+  // Segment-based matching: no pathname parsing, and trailingSlash or locale prefix don't matter.
   const active = useSelectedLayoutSegment() === item.segment;
   return (
     <Link href={item.href} aria-current={active ? 'page' : undefined} className={className} onClick={onClick}>

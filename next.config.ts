@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
   images: { unoptimized: true },
   // Type-check every <Link href> against the routes in app/.
   typedRoutes: true,
+  experimental: {
+    // One root layout per locale means no single layout for unmatched URLs;
+    // app/global-not-found.tsx renders them instead (exported as 404.html).
+    globalNotFound: true,
+  },
 };
 
 export default nextConfig;

@@ -25,7 +25,7 @@ export default function PageSection({
         <Heading id={`${id}-heading`} className={Heading === 'h1' ? 'text-fluid-3xl' : 'text-fluid-2xl'}>
           {title}
         </Heading>
-        {intro && <div className="max-w-[60ch] text-muted">{intro}</div>}
+        {intro && <div className="max-w-[60ch] text-muted zh:max-w-[36em]">{intro}</div>}
       </header>
       {children}
     </section>

@@ -15,7 +15,7 @@ function currentTheme(): Theme {
  * Icons are swapped purely in CSS (the `dark:` variant reads data-theme and the OS
  * preference), so the static HTML is right on first paint and never mismatches on hydration.
  */
-export default function ThemeToggle() {
+export default function ThemeToggle({ label }: { label: string }) {
   const toggle = () => {
     const next: Theme = currentTheme() === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
@@ -30,8 +30,8 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={toggle}
-      aria-label="Toggle dark mode"
-      title="Toggle dark mode"
+      aria-label={label}
+      title={label}
       className="grid size-10 cursor-pointer place-items-center rounded-full border border-line text-ink transition duration-300 ease-soft hover:rotate-20 hover:bg-sunk motion-reduce:transition-none"
     >
       {/* Spans carry the visibility: Font Awesome's own CSS sets display on the <svg> */}
