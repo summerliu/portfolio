@@ -1,43 +1,47 @@
 import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
+import About from './app/about/page';
+import NotFound from './app/not-found';
+import Home from './app/page';
 import { site } from './content';
-import { renderRoute } from './test/renderRoute';
+import { renderPage } from './test/renderPage';
 
-describe('routing', () => {
+describe('pages', () => {
   it('renders the home page', () => {
-    renderRoute('/');
+    renderPage(<Home />);
     expect(screen.getByRole('heading', { level: 1, name: 'Web Frontend Developer' })).toBeInTheDocument();
   });
 
   it('renders the about page', () => {
-    renderRoute('/about');
+    renderPage(<About />, '/about/');
     expect(screen.getByRole('heading', { level: 1, name: site.name })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: /Summer Liu/ })).toBeInTheDocument();
   });
 
-  it('renders a 404 for unknown paths', () => {
-    renderRoute('/does-not-exist');
+  it('renders the 404 page', () => {
+    renderPage(<NotFound />, '/nope/');
     expect(screen.getByRole('heading', { level: 1, name: /wandered off/ })).toBeInTheDocument();
-  });
-
-  it('navigates from home to about', async () => {
-    renderRoute('/');
-    const primaryNav = screen.getByRole('navigation', { name: 'Primary' });
-    await userEvent.click(within(primaryNav).getByRole('link', { name: 'About' }));
-    expect(screen.getByRole('heading', { level: 1, name: site.name })).toBeInTheDocument();
-  });
-
-  it('marks the current page in the primary nav', () => {
-    renderRoute('/about');
-    const nav = screen.getByRole('navigation', { name: 'Primary' });
-    expect(within(nav).getByRole('link', { name: 'About' })).toHaveAttribute('aria-current', 'page');
   });
 });
 
-describe('layout', () => {
+describe('navigation', () => {
+  it('links to each page', () => {
+    renderPage(<Home />);
+    const nav = screen.getByRole('navigation', { name: 'Primary' });
+    expect(within(nav).getByRole('link', { name: 'Home' })).toHaveAttribute('href', '/');
+    expect(within(nav).getByRole('link', { name: 'About' })).toHaveAttribute('href', '/about');
+  });
+
+  it('marks the current page', () => {
+    renderPage(<About />, '/about/');
+    const nav = screen.getByRole('navigation', { name: 'Primary' });
+    expect(within(nav).getByRole('link', { name: 'About' })).toHaveAttribute('aria-current', 'page');
+    expect(within(nav).getByRole('link', { name: 'Home' })).not.toHaveAttribute('aria-current');
+  });
+
   it('links to email, CV and social profiles', () => {
-    renderRoute('/');
+    renderPage(<Home />);
     expect(screen.getByRole('link', { name: new RegExp(site.email) })).toHaveAttribute(
       'href',
       `mailto:${site.email}`,
@@ -51,10 +55,12 @@ describe('layout', () => {
 
 describe('theme toggle', () => {
   it('switches theme and remembers the choice', async () => {
-    renderRoute('/');
-    await userEvent.click(screen.getByRole('button', { name: 'Switch to dark theme' }));
+    renderPage(<Home />);
+    const toggle = screen.getByRole('button', { name: 'Toggle dark mode' });
+    await userEvent.click(toggle);
     expect(document.documentElement.dataset.theme).toBe('dark');
     expect(localStorage.getItem('theme')).toBe('dark');
-    expect(screen.getByRole('button', { name: 'Switch to light theme' })).toBeInTheDocument();
+    await userEvent.click(toggle);
+    expect(document.documentElement.dataset.theme).toBe('light');
   });
 });

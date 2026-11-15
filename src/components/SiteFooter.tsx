@@ -1,30 +1,36 @@
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { site, socialLinks } from '../content';
-import styles from './SiteFooter.module.css';
 
 export default function SiteFooter() {
   return (
-    <footer className={styles.footer}>
-      <div className={`container ${styles.cta}`}>
+    <footer className="mt-section border-t border-line bg-sunk">
+      <div className="wrap grid gap-4 pt-section pb-[calc(var(--spacing-section)*0.75)]">
         <p className="eyebrow">Get in touch</p>
-        <h2 className={styles.ctaTitle}>
-          Have an idea? <em>Let’s build it.</em>
+        <h2 className="max-w-[18ch] text-fluid-2xl">
+          Have an idea? <em className="text-sage">Let’s build it.</em>
         </h2>
-        <a className={styles.mail} href={`mailto:${site.email}`}>
+        <a href={`mailto:${site.email}`} className="link-accent mt-2 gap-3 pb-0.5 text-fluid-lg font-medium">
           {site.email}
           <FontAwesomeIcon icon={faArrowRight} />
         </a>
       </div>
 
-      <div className={`container ${styles.bottom}`}>
+      <div className="wrap flex flex-wrap items-center justify-between gap-4 border-t border-line py-6 text-muted">
         <small>
           © {new Date().getFullYear()} {site.name}
         </small>
-        <ul className={styles.social}>
+        <ul className="flex gap-2">
           {socialLinks.map((s) => (
             <li key={s.label}>
-              <a href={s.href} target="_blank" rel="noreferrer" aria-label={s.label} title={s.label}>
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={s.label}
+                title={s.label}
+                className="grid size-10 place-items-center rounded-full text-lg transition-colors duration-200 ease-soft hover:bg-surface hover:text-ink"
+              >
                 <FontAwesomeIcon icon={s.icon} />
               </a>
             </li>

@@ -4,11 +4,10 @@ Personal portfolio of Summer Liu, a frontend developer from Taiwan. Live at **ht
 
 ## Stack
 
+- [Next.js 16](https://nextjs.org) (App Router) with **static export**: every page is prerendered HTML
 - [React 19](https://react.dev) + [TypeScript 7](https://www.typescriptlang.org) (strict)
-- [Vite](https://vite.dev) for dev server and builds
-- [React Router](https://reactrouter.com) for client-side routing
-- Plain modern CSS: CSS modules, cascade layers, native nesting, OKLCH colour with `light-dark()`,
-  fluid `clamp()` type, `@starting-style`, scroll-driven animations and view transitions
+- [Tailwind CSS v4](https://tailwindcss.com): design tokens live in `@theme` in `src/app/globals.css`
+  (OKLCH colours with `light-dark()` for automatic dark mode, fluid `clamp()` type)
 - Self-hosted Inter and Fraunces variable fonts via Fontsource
 - [Biome](https://biomejs.dev) for linting and formatting
 - [Vitest](https://vitest.dev) + Testing Library for tests
@@ -24,34 +23,42 @@ npm run dev        # start the dev server
 
 ## Scripts
 
-| Script              | What it does                                       |
-| ------------------- | -------------------------------------------------- |
-| `npm run dev`       | Dev server with HMR                                |
-| `npm run build`     | Typecheck and build to `dist/`                     |
-| `npm run preview`   | Serve the production build locally                 |
-| `npm run lint`      | Lint and format check (`lint:fix` to apply fixes)  |
-| `npm run typecheck` | TypeScript type check                              |
-| `npm test`          | Run tests once (`test:watch` for watch mode)       |
-| `npm run deploy`    | Build and publish `dist/` to the `gh-pages` branch |
+| Script              | What it does                                      |
+| ------------------- | ------------------------------------------------- |
+| `npm run dev`       | Dev server at http://localhost:3000/portfolio     |
+| `npm run build`     | Typecheck and export the static site to `out/`    |
+| `npm run lint`      | Lint and format check (`lint:fix` to apply fixes) |
+| `npm run typecheck` | TypeScript type check                             |
+| `npm test`          | Run tests once (`test:watch` for watch mode)      |
+| `npm run deploy`    | Build and publish `out/` to the `gh-pages` branch |
 
 ## Project layout
 
 ```
 src/
+  app/
+    layout.tsx        # root layout: metadata, header, footer, theme bootstrap
+    page.tsx          # home
+    about/page.tsx    # about
+    not-found.tsx     # 404 (exported as 404.html)
+    manifest.ts       # web app manifest
+    globals.css       # Tailwind import, @theme tokens, base styles, utilities
+  components/         # SiteHeader, SiteFooter, ThemeToggle
   content.ts          # name, links, CV URL, socials — edit content here
-  components/         # Layout, SiteHeader, SiteFooter, ThemeToggle
-  pages/              # Home, About, NotFound (each with a CSS module)
-  styles/global.css   # design tokens, reset, base styles, utilities
-public/               # static files copied as-is (favicon, manifest)
+public/               # static files (.nojekyll, logo)
 ```
 
 ## Deployment
 
-`npm run deploy` publishes to GitHub Pages via the `gh-pages` branch. The site is a project site, so
-Vite's `base` and the router's `basename` are both `/portfolio/`. The build writes `dist/404.html` so
-client-side routes like `/portfolio/about` work on a hard refresh.
+The site is a GitHub Pages project site at https://summerliu.github.io/portfolio/.
 
-To move to a custom domain later, add `public/CNAME`, set `base: '/'` in `vite.config.ts`, and set the
-domain under the repo's Settings → Pages.
+- `next.config.ts` sets `output: 'export'`, `basePath: '/portfolio'` and `trailingSlash: true`, so
+  `/about` is exported as `out/about/index.html` and is served with a normal 200.
+- Images are served unoptimized (`next/image`'s optimizer needs a server).
+- `public/.nojekyll` stops GitHub Pages from hiding the `_next/` directory; `npm run deploy` publishes
+  dotfiles so it is included.
 
-Never commit directly to `gh-pages`.
+`npm run deploy` publishes `out/` to the `gh-pages` branch. Never commit directly to `gh-pages`.
+
+To move to a custom domain later, add `public/CNAME`, remove `basePath` from `next.config.ts`, update
+`site.url` in `src/content.ts`, and set the domain under the repo's Settings → Pages.

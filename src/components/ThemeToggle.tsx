@@ -1,47 +1,46 @@
+'use client';
+
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
-import styles from './ThemeToggle.module.css';
 
 type Theme = 'light' | 'dark';
-
-const media = () => window.matchMedia('(prefers-color-scheme: dark)');
 
 function currentTheme(): Theme {
   const explicit = document.documentElement.dataset.theme;
   if (explicit === 'light' || explicit === 'dark') return explicit;
-  return media().matches ? 'dark' : 'light';
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
+/**
+ * Icons are swapped purely in CSS (the `dark:` variant reads data-theme and the OS
+ * preference), so the static HTML is right on first paint and never mismatches on hydration.
+ */
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>(currentTheme);
-
-  // Follow OS changes until the visitor makes an explicit choice.
-  useEffect(() => {
-    const mq = media();
-    const onChange = () => {
-      if (!document.documentElement.dataset.theme) setTheme(mq.matches ? 'dark' : 'light');
-    };
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
-  }, []);
-
   const toggle = () => {
-    const next: Theme = theme === 'dark' ? 'light' : 'dark';
+    const next: Theme = currentTheme() === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
     try {
       localStorage.setItem('theme', next);
     } catch {
       // Storage may be unavailable (private mode); the choice still applies for this visit.
     }
-    setTheme(next);
   };
 
-  const label = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
-
   return (
-    <button type="button" className={styles.toggle} onClick={toggle} aria-label={label} title={label}>
-      <FontAwesomeIcon icon={theme === 'dark' ? faSun : faMoon} />
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label="Toggle dark mode"
+      title="Toggle dark mode"
+      className="grid size-10 cursor-pointer place-items-center rounded-full border border-line text-ink transition duration-300 ease-soft hover:rotate-20 hover:bg-sunk motion-reduce:transition-none"
+    >
+      {/* Spans carry the visibility: Font Awesome's own CSS sets display on the <svg> */}
+      <span className="dark:hidden">
+        <FontAwesomeIcon icon={faMoon} />
+      </span>
+      <span className="hidden dark:inline">
+        <FontAwesomeIcon icon={faSun} />
+      </span>
     </button>
   );
 }
