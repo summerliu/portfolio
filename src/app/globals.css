@@ -1,97 +1,75 @@
 @import "@fontsource-variable/inter/index.css";
 @import "@fontsource-variable/fraunces/opsz.css";
 @import "@fontsource-variable/fraunces/opsz-italic.css";
+@import "tailwindcss";
 
-@layer reset, tokens, base, utilities;
-
-/* ---------------------------------------------------------------- reset */
-@layer reset {
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
+/*
+ * `dark:` follows the theme toggle (data-theme) and otherwise the OS preference.
+ * Colours themselves switch automatically via light-dark(); this variant is
+ * only for things that differ structurally, like which icon to show.
+ */
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
   }
-
-  * {
-    margin: 0;
-  }
-
-  html {
-    -webkit-text-size-adjust: none;
-    text-size-adjust: none;
-    hanging-punctuation: first last;
-  }
-
-  img,
-  picture,
-  svg,
-  video {
-    display: block;
-    max-inline-size: 100%;
-  }
-
-  input,
-  button,
-  textarea,
-  select {
-    font: inherit;
-    color: inherit;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    text-wrap: balance;
-    overflow-wrap: break-word;
-  }
-
-  p {
-    text-wrap: pretty;
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *) {
+      @slot;
+    }
   }
 }
 
-/* --------------------------------------------------------------- tokens */
-@layer tokens {
+@theme {
+  /* Colour — warm paper + sage (the original brand green) + clay accent */
+  --color-paper: light-dark(oklch(98.4% 0.008 85), oklch(17.5% 0.008 60));
+  --color-surface: light-dark(oklch(100% 0 0), oklch(21.5% 0.01 60));
+  --color-sunk: light-dark(oklch(95.6% 0.012 85), oklch(14.5% 0.008 60));
+  --color-ink: light-dark(oklch(23% 0.012 60), oklch(94.5% 0.01 85));
+  --color-muted: light-dark(oklch(47% 0.012 60), oklch(73% 0.01 85));
+  --color-line: light-dark(oklch(89.5% 0.012 85), oklch(30% 0.012 60));
+  --color-sage: light-dark(oklch(50% 0.065 178), oklch(76% 0.07 178));
+  --color-sage-soft: light-dark(oklch(93.5% 0.03 178), oklch(28% 0.04 178));
+  --color-clay: light-dark(oklch(56% 0.14 40), oklch(74% 0.12 45));
+
+  /* Type */
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Fraunces Variable", ui-serif, Georgia, "Times New Roman", serif;
+
+  --text-fluid-sm: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+  --text-fluid-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --text-fluid-lg: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --text-fluid-xl: clamp(1.6rem, 1.4rem + 1vw, 2.2rem);
+  --text-fluid-2xl: clamp(2.1rem, 1.7rem + 2vw, 3.4rem);
+  --text-fluid-2xl--line-height: 1.08;
+  --text-fluid-3xl: clamp(2.8rem, 2rem + 4vw, 5.6rem);
+  --text-fluid-3xl--line-height: 1.05;
+
+  /* Space & shape */
+  --spacing-gutter: clamp(1.25rem, 4vw, 3rem);
+  --spacing-section: clamp(4rem, 3rem + 6vw, 8rem);
+  --spacing-header: 4.25rem;
+  --radius-card: 1.75rem;
+  --shadow-soft: 0 1px 2px oklch(20% 0.02 60 / 0.06), 0 8px 24px -8px oklch(20% 0.02 60 / 0.12);
+  --ease-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  --animate-drift: drift 18s ease-in-out infinite alternate;
+
+  @keyframes drift {
+    to {
+      translate: -8% 10%;
+      rotate: 25deg;
+    }
+  }
+}
+
+@layer base {
   :root {
     color-scheme: light dark;
-
-    /* Colour — warm paper + sage (the original brand green) + clay accent */
-    --paper: light-dark(oklch(98.4% 0.008 85), oklch(17.5% 0.008 60));
-    --surface: light-dark(oklch(100% 0 0), oklch(21.5% 0.01 60));
-    --surface-sunk: light-dark(oklch(95.6% 0.012 85), oklch(14.5% 0.008 60));
-    --ink: light-dark(oklch(23% 0.012 60), oklch(94.5% 0.01 85));
-    --ink-muted: light-dark(oklch(47% 0.012 60), oklch(73% 0.01 85));
-    --line: light-dark(oklch(89.5% 0.012 85), oklch(30% 0.012 60));
-    --sage: light-dark(oklch(50% 0.065 178), oklch(76% 0.07 178));
-    --sage-soft: light-dark(oklch(93.5% 0.03 178), oklch(28% 0.04 178));
-    --clay: light-dark(oklch(56% 0.14 40), oklch(74% 0.12 45));
-    --on-accent: light-dark(oklch(99% 0 0), oklch(17.5% 0.008 60));
-
-    /* Type */
-    --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-    --font-serif: "Fraunces Variable", ui-serif, Georgia, "Times New Roman", serif;
-
-    --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
-    --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
-    --step-1: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
-    --step-2: clamp(1.6rem, 1.4rem + 1vw, 2.2rem);
-    --step-3: clamp(2.1rem, 1.7rem + 2vw, 3.4rem);
-    --step-4: clamp(2.8rem, 2rem + 4vw, 5.6rem);
-
-    /* Space & shape */
-    --gutter: clamp(1.25rem, 4vw, 3rem);
-    --section: clamp(4rem, 3rem + 6vw, 8rem);
-    --container: 72rem;
-    --radius: 1rem;
-    --radius-lg: 1.75rem;
-    --header-h: 4.25rem;
-
-    --shadow: 0 1px 2px oklch(20% 0.02 60 / 0.06), 0 8px 24px -8px oklch(20% 0.02 60 / 0.12);
-    --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+    scroll-padding-block-start: calc(var(--spacing-header) + 1rem);
+    accent-color: var(--color-sage);
+    hanging-punctuation: first last;
   }
 
-  /* Explicit choice from the theme toggle wins over the OS preference */
   :root[data-theme="light"] {
     color-scheme: light;
   }
@@ -99,41 +77,24 @@
   :root[data-theme="dark"] {
     color-scheme: dark;
   }
-}
-
-/* ----------------------------------------------------------------- base */
-@layer base {
-  html {
-    scroll-padding-block-start: calc(var(--header-h) + 1rem);
-    accent-color: var(--sage);
-  }
 
   @media (prefers-reduced-motion: no-preference) {
-    html {
+    :root {
       scroll-behavior: smooth;
     }
   }
 
   body {
-    min-block-size: 100dvh;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--font-sans);
-    font-size: var(--step-0);
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* Keep the footer at the bottom on short pages */
-  #root {
     display: flex;
     flex-direction: column;
     min-block-size: 100dvh;
-  }
-
-  main {
-    flex: 1;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-fluid-base);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1,
@@ -143,81 +104,98 @@
     font-weight: 500;
     line-height: 1.08;
     letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   a {
-    color: inherit;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.2em;
   }
 
   :focus-visible {
-    outline: 2px solid var(--sage);
+    outline: 2px solid var(--color-sage);
     outline-offset: 3px;
     border-radius: 4px;
   }
 
   ::selection {
-    background: var(--sage-soft);
-    color: var(--ink);
+    background: var(--color-sage-soft);
+    color: var(--color-ink);
+  }
+}
+
+/* Page-width wrapper with fluid side gutters */
+@utility wrap {
+  inline-size: min(100% - 2 * var(--spacing-gutter), 72rem);
+  margin-inline: auto;
+}
+
+@utility eyebrow {
+  font-size: var(--text-fluid-sm);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-sage);
+}
+
+/* Underlined text link with a clay rule and a nudging arrow */
+@utility link-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  inline-size: fit-content;
+  font-weight: 600;
+  text-decoration: none;
+  border-block-end: 2px solid var(--color-clay);
+
+  & svg {
+    font-size: 0.8em;
+    transition: translate 250ms var(--ease-soft);
   }
 
-  /* Cross-fade between routes (react-router `viewTransition`) */
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation-duration: 220ms;
-    animation-timing-function: var(--ease-out);
+  &:hover svg {
+    translate: 0.25rem 0;
   }
+}
 
-  @media (prefers-reduced-motion: reduce) {
-    ::view-transition-group(*),
-    ::view-transition-old(*),
-    ::view-transition-new(*) {
-      /* biome-ignore lint/complexity/noImportantStyles: must override UA view-transition animations */
-      animation: none !important;
+/* Pill button; add bg/text colours alongside */
+@utility pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  font-size: var(--text-fluid-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    translate 200ms var(--ease-soft),
+    box-shadow 200ms var(--ease-soft);
+
+  &:hover {
+    translate: 0 -2px;
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+/* Scroll-driven reveal: pure CSS, progressive enhancement */
+@utility reveal {
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
     }
   }
 }
 
-/* ------------------------------------------------------------ utilities */
-@layer utilities {
-  .container {
-    inline-size: min(100% - 2 * var(--gutter), var(--container));
-    margin-inline: auto;
-  }
-
-  .eyebrow {
-    font-size: var(--step--1);
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--sage);
-  }
-
-  .visually-hidden:not(:focus-within, :active) {
-    position: absolute;
-    inline-size: 1px;
-    block-size: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-
-  /* Scroll-driven reveal: pure CSS, progressive enhancement */
-  @supports (animation-timeline: view()) {
-    @media (prefers-reduced-motion: no-preference) {
-      .reveal {
-        animation: reveal linear both;
-        animation-timeline: view();
-        animation-range: entry 0% entry 60%;
-      }
-    }
-  }
-
-  @keyframes reveal {
-    from {
-      opacity: 0;
-      translate: 0 2rem;
-    }
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 2rem;
   }
 }
