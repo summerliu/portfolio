@@ -1,7 +1,8 @@
 import { copyFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import type { Plugin } from 'vite';
+import { defineConfig } from 'vitest/config';
 
 /**
  * GitHub Pages has no SPA rewrites. Serving index.html as 404.html lets
@@ -23,4 +24,9 @@ function spaFallback(): Plugin {
 
 export default defineConfig({
   plugins: [react(), spaFallback()],
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['./src/test/setup.ts'],
+    css: { modules: { classNameStrategy: 'non-scoped' } },
+  },
 });
