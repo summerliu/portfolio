@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "typecheck": "tsc",
+    "typecheck": "next typegen && tsc",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "test": "vitest run",
