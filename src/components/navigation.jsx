@@ -52,7 +52,6 @@ const ImgDiv = styled.div`
 const routes = [
     {path: '/', name: 'Home'},
     {path: '/about', name: 'About'},
-    // {path: '/experience', name: 'Experience'},
     // {path: '/projects', name: 'Projects'},
 ];
 
