@@ -12,15 +12,15 @@
 
 .portrait {
   position: relative;
-  max-inline-size: 30rem;
+  --offset: clamp(0.75rem, 2vw, 1.25rem);
+  inline-size: min(100% - var(--offset), 30rem);
   margin-inline: auto;
-  inline-size: 100%;
 
   /* Offset frame behind the arch-shaped photo */
   &::before {
     content: '';
     position: absolute;
-    inset: 1.25rem -1.25rem -1.25rem 1.25rem;
+    inset: var(--offset) calc(-1 * var(--offset)) calc(-1 * var(--offset)) var(--offset);
     z-index: -1;
     border-radius: 999px 999px var(--radius-lg) var(--radius-lg);
     background: var(--sage-soft);

@@ -125,6 +125,17 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Keep the footer at the bottom on short pages */
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-block-size: 100dvh;
+  }
+
+  main {
+    flex: 1;
+  }
+
   h1,
   h2,
   h3 {
